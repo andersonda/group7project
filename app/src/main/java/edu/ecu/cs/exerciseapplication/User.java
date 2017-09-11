@@ -79,7 +79,7 @@ public class User {
     }
 
     /**
-     * BMI = weight (in kilograms) divided by height (in centimeters) squared.
+     * BMI = weight(in kilograms) divided by height(in centimeters) squared.
      * @param height
      * @param weight
      * @return
