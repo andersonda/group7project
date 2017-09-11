@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Exercise Application</string>
+
+    <string name="register_fname">First Name:</string>
+    <string name="fname_hint">John</string>
+    <string name="register_lname">Last Name:</string>
+    <string name="lname_hint">Smith</string>
+    <string name="register_age">Age:</string>
+    <string name="register_weight">Weight:</string>
+    <string name="register_height">Height:</string>
 </resources>
