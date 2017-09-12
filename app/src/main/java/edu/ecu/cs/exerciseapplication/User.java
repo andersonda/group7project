@@ -44,13 +44,8 @@ public class User {
         return mWeight;
     }
 
-
-    /**
-     * coverts mass in kilograms to mass in pounds
-     * @return
-     */
-    public double getmWeightInPounds(){
-        return KG_TO_LB * mWeight;
+    public double getmWeightImperial(){
+        return convertKGtoLB(mWeight);
     }
 
     public void setmWeight(double mWeight) {
@@ -62,8 +57,7 @@ public class User {
     }
 
     public ImperialHeight getmHeightImperial(){
-        int totalInches = (int)(M_TO_IN * mHeight);
-        return new ImperialHeight(totalInches / 12, totalInches % 12);
+        return convertMtoF(mHeight);
     }
 
     public void setmHeight(double mHeight) {
@@ -88,7 +82,7 @@ public class User {
         return mWeight / (mHeight * mHeight);
     }
 
-    private class ImperialHeight{
+    private static class ImperialHeight{
         private int mFeet;
         private int mInches;
 
@@ -112,5 +106,27 @@ public class User {
         public void setmInches(int mInches) {
             this.mInches = mInches;
         }
+    }
+
+    // conversion functions. these may be better in their own "measurement" class eventually
+
+    public static ImperialHeight convertMtoF(double meters){
+        int totalInches = (int)(meters * M_TO_IN);
+        int feet = totalInches / 12;
+        int inches = totalInches % 12;
+        return new ImperialHeight(feet, inches);
+    }
+
+    public static double convertFtoM(ImperialHeight iH){
+        int totalInches = iH.getmFeet() * 12 + iH.getmInches();
+        return totalInches / M_TO_IN;
+    }
+
+    public static double convertKGtoLB(double kg){
+        return kg * KG_TO_LB;
+    }
+
+    public static double convertLBtoKG(double lb){
+        return lb / KG_TO_LB;
     }
 }
