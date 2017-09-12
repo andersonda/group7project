@@ -67,18 +67,14 @@
         android:orientation="vertical">
 
         <Switch
-            android:id="@+id/register_height_toggle"
+            android:id="@+id/register_height_switch"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textOn="@string/register_pounds"
-            android:textOff="@string/register_kilo"/>
+            android:layout_height="wrap_content" />
 
         <Switch
-            android:id="@+id/register_weight_toggle"
+            android:id="@+id/register_weight_switch"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textOn="@string/register_feet"
-            android:textOff="@string/register_meters"/>
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <LinearLayout
@@ -119,11 +115,9 @@
         android:orientation="vertical">
 
         <Switch
-            android:id="@+id/register_sex_toggle"
+            android:id="@+id/register_sex_switch"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textOn="@string/register_male"
-            android:textOff="@string/register_female"/>
+            android:layout_height="wrap_content" />
         <Button
             android:id="@+id/register_submit"
             android:layout_width="wrap_content"
