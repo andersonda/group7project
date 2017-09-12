@@ -1,10 +1,12 @@
 package edu.ecu.cs.exerciseapplication;
 
+import com.orm.SugarRecord;
+
 /**
  * Created by danderson on 9/11/17.
  */
 
-public class User {
+public class User extends SugarRecord<User> {
 
     private String mFirstName;
     private String mLastName;
@@ -18,6 +20,7 @@ public class User {
      * height in meters
      */
     private double mHeight;
+
     private int mAge;
 
     private static final double KG_TO_LB = 2.20462;
