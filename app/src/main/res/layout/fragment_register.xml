@@ -3,7 +3,12 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:layout_margin="16dp">
+              android:layout_margin="32dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/register_welcome"/>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,4 +43,92 @@
             android:hint="@string/lname_hint"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register_age"/>
+        <EditText
+            android:id="@+id/register_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/age_hint"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Switch
+            android:id="@+id/register_height_toggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textOn="@string/register_pounds"
+            android:textOff="@string/register_kilo"/>
+
+        <Switch
+            android:id="@+id/register_weight_toggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textOn="@string/register_feet"
+            android:textOff="@string/register_meters"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register_weight"/>
+        <EditText
+            android:id="@+id/register_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/weight_hint"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register_height"/>
+        <EditText
+            android:id="@+id/register_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/height_hint"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Switch
+            android:id="@+id/register_sex_toggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textOn="@string/register_male"
+            android:textOff="@string/register_female"/>
+        <Button
+            android:id="@+id/register_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/submit_button"/>
+
+    </LinearLayout>
 </LinearLayout>

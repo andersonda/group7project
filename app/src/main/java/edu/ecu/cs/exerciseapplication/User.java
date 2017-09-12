@@ -23,9 +23,19 @@ public class User extends SugarRecord<User> {
 
     private int mAge;
 
+    private boolean mIsMale;
+
     private static final double KG_TO_LB = 2.20462;
     private static final double M_TO_IN = 39.3701;
 
+    public User(String mFirstName, String mLastName, double mWeight, double mHeight, int mAge, boolean mIsMale) {
+        this.mFirstName = mFirstName;
+        this.mLastName = mLastName;
+        this.mWeight = mWeight;
+        this.mHeight = mHeight;
+        this.mAge = mAge;
+        this.mIsMale = mIsMale;
+    }
 
     public String getmFirstName() {
         return mFirstName;
@@ -73,6 +83,14 @@ public class User extends SugarRecord<User> {
 
     public void setmAge(int mAge) {
         this.mAge = mAge;
+    }
+
+    public boolean ismIsMale() {
+        return mIsMale;
+    }
+
+    public void setmIsMale(boolean mIsMale) {
+        this.mIsMale = mIsMale;
     }
 
     /**
