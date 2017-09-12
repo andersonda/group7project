@@ -8,15 +8,12 @@
     <string name="lname_hint">Smith</string>
     <string name="register_age">Age:</string>
     <string name="age_hint">25</string>
-    <string name="register_feet">Feet</string>
-    <string name="register_pounds">Pounds</string>
-    <string name="register_meters">Meters</string>
-    <string name="register_kilo">Kilograms</string>
-    <string name="register_weight">Weight:</string>
+    <string name="register_feet_meters">Feet/Meters</string>
+    <string name="register_pounds_kilo">Pounds/Kilos</string>
     <string name="weight_hint">62</string>
     <string name="register_height">Height:</string>
+    <string name="register_weight">Weight:</string>
     <string name="height_hint">1.8</string>
-    <string name="register_male">Male</string>
-    <string name="register_female">Female</string>
     <string name="submit_button">Submit</string>
+    <string name="register_male_female">Female/Male</string>
 </resources>
