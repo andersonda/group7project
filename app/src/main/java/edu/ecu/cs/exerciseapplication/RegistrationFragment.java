@@ -1,5 +1,6 @@
 package edu.ecu.cs.exerciseapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -42,6 +43,15 @@ public class RegistrationFragment extends Fragment {
         mSwitchWeight = v.findViewById(R.id.register_weight_switch);
         mSwitchSex = v.findViewById(R.id.register_sex_switch);
         mSubmitButton = v.findViewById(R.id.register_submit);
+
+
+        mSubmitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = HomeActivity.newIntent(getActivity());
+                startActivity(intent);
+            }
+        });
         return v;
     }
 
