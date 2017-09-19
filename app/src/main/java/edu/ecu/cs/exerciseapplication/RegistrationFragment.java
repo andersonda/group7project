@@ -1,5 +1,6 @@
 package edu.ecu.cs.exerciseapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,8 +16,6 @@ import android.widget.Switch;
  */
 
 public class RegistrationFragment extends Fragment {
-
-    private User mUser;
 
     private EditText mEditFname, mEditLname, mEditAge, mEditWeight, mEditHeight;
     private Switch mSwitchWeight, mSwitchHeight, mSwitchSex;
@@ -37,11 +36,27 @@ public class RegistrationFragment extends Fragment {
         mEditAge = v.findViewById(R.id.register_age);
         mEditWeight = v.findViewById(R.id.register_weight);
         mEditHeight = v.findViewById(R.id.register_height);
-
         mSwitchHeight = v.findViewById(R.id.register_height_switch);
         mSwitchWeight = v.findViewById(R.id.register_weight_switch);
         mSwitchSex = v.findViewById(R.id.register_sex_switch);
         mSubmitButton = v.findViewById(R.id.register_submit);
+        mSubmitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               User mUser = new User(
+                        mEditFname.getText().toString(),
+                        mEditLname.getText().toString(),
+                        Double.parseDouble(mEditWeight.getText().toString()),
+                        Double.parseDouble(mEditHeight.getText().toString()),
+                        Integer.parseInt(mEditAge.getText().toString()),
+                        mSwitchSex.isActivated()
+                );
+                mUser.save();
+
+                Intent intent = new Intent(getActivity(), TestUserDataActivity.class);
+                startActivity(intent);
+            }
+        });
         return v;
     }
 
