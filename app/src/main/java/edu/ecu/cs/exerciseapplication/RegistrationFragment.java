@@ -48,6 +48,16 @@ public class RegistrationFragment extends Fragment {
         mSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                User mUser = new User(
+                        mEditFname.getText().toString(),
+                        mEditLname.getText().toString(),
+                        Double.parseDouble(mEditWeight.getText().toString()),
+                        Double.parseDouble(mEditHeight.getText().toString()),
+                        Integer.parseInt(mEditAge.getText().toString()),
+                        mSwitchSex.isActivated()
+                );
+                mUser.save();
+
                 Intent intent = HomeActivity.newIntent(getActivity());
                 startActivity(intent);
             }
