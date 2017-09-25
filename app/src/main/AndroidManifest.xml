@@ -10,8 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:replace="android:icon"
-        android:name="com.orm.SugarApp">
+        tools:replace="android:icon">
         <activity android:name=".RegistrationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -19,19 +18,6 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
-        <meta-data
-            android:name="DATABASE"
-            android:value="exercise.db"/>
-        <meta-data
-            android:name="VERSION"
-            android:value="2"/>
-        <meta-data
-            android:name="QUERY_LOG"
-            android:value="true"/>
-        <meta-data
-            android:name="DOMAIN_PACKAGE_NAME"
-            android:value="edu.ecu.cs.exerciseapplication"/>
 
         <activity
             android:name=".HomeActivity"

@@ -1,28 +1,42 @@
 package edu.ecu.cs.exerciseapplication;
 
-import com.orm.SugarRecord;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
+import java.util.UUID;
 
 /**
  * Created by danderson on 9/11/17.
  */
 
-public class User extends SugarRecord<User> {
+@DatabaseTable(tableName = "users")
+public class User{
 
+    @DatabaseField(id = true)
+    private UUID mUserID;
+
+    @DatabaseField
     private String mFirstName;
+
+    @DatabaseField
     private String mLastName;
 
     /**
      * weight in kilograms
      */
+    @DatabaseField
     private double mWeight;
 
     /**
      * height in meters
      */
+    @DatabaseField
     private double mHeight;
 
+    @DatabaseField
     private int mAge;
 
+    @DatabaseField
     private boolean mIsMale;
 
     private static final double KG_TO_LB = 2.20462;
@@ -35,6 +49,7 @@ public class User extends SugarRecord<User> {
         this.mHeight = mHeight;
         this.mAge = mAge;
         this.mIsMale = mIsMale;
+        mUserID = UUID.randomUUID();
     }
 
     public String getmFirstName() {

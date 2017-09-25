@@ -12,6 +12,10 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.j256.ormlite.dao.Dao;
+
+import java.util.List;
+
 /**
  * Created by danderson on 9/12/17.
  */
@@ -62,7 +66,6 @@ public class RegistrationFragment extends Fragment {
                             Integer.parseInt(mEditAge.getText().toString()),
                             mSwitchSex.isActivated()
                     );
-                    mUser.save();
 
                     Intent intent = HomeActivity.newIntent(getActivity());
                     startActivity(intent);
