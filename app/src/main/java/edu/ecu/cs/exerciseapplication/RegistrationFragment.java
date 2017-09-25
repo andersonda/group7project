@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.Toast;
 
 /**
  * Created by danderson on 9/12/17.
@@ -48,21 +49,32 @@ public class RegistrationFragment extends Fragment {
         mSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                User mUser = new User(
-                        mEditFname.getText().toString(),
-                        mEditLname.getText().toString(),
-                        Double.parseDouble(mEditWeight.getText().toString()),
-                        Double.parseDouble(mEditHeight.getText().toString()),
-                        Integer.parseInt(mEditAge.getText().toString()),
-                        mSwitchSex.isActivated()
-                );
-                mUser.save();
+                if(isEmpty(mEditFname) || isEmpty(mEditLname) || isEmpty(mEditAge) || isEmpty(mEditHeight)
+                    || isEmpty(mEditWeight)){
+                    Toast.makeText(getActivity(), "A required field was left blank!", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    User mUser = new User(
+                            mEditFname.getText().toString(),
+                            mEditLname.getText().toString(),
+                            Double.parseDouble(mEditWeight.getText().toString()),
+                            Double.parseDouble(mEditHeight.getText().toString()),
+                            Integer.parseInt(mEditAge.getText().toString()),
+                            mSwitchSex.isActivated()
+                    );
+                    mUser.save();
 
-                Intent intent = HomeActivity.newIntent(getActivity());
-                startActivity(intent);
+                    Intent intent = HomeActivity.newIntent(getActivity());
+                    startActivity(intent);
+                }
+
             }
         });
         return v;
+    }
+
+    private static boolean isEmpty(EditText editText){
+        return editText.getText().toString().matches("");
     }
 
 }
