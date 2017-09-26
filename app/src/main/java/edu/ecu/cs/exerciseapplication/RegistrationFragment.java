@@ -17,8 +17,6 @@ import android.widget.Switch;
 
 public class RegistrationFragment extends Fragment {
 
-    private User mUser;
-
     private EditText mEditFname, mEditLname, mEditAge, mEditWeight, mEditHeight;
     private Switch mSwitchWeight, mSwitchHeight, mSwitchSex;
     private Button mSubmitButton;
@@ -38,7 +36,6 @@ public class RegistrationFragment extends Fragment {
         mEditAge = v.findViewById(R.id.register_age);
         mEditWeight = v.findViewById(R.id.register_weight);
         mEditHeight = v.findViewById(R.id.register_height);
-
         mSwitchHeight = v.findViewById(R.id.register_height_switch);
         mSwitchWeight = v.findViewById(R.id.register_weight_switch);
         mSwitchSex = v.findViewById(R.id.register_sex_switch);
