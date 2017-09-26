@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 
 import java.util.List;
@@ -28,9 +29,20 @@ public class RegistrationFragment extends Fragment {
     private Switch mSwitchWeight, mSwitchHeight, mSwitchSex;
     private Button mSubmitButton;
 
+    private DatabaseHelper mDBHelper = null;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mDBHelper != null) {
+            OpenHelperManager.releaseHelper();
+            mDBHelper = null;
+        }
     }
 
     @Override
@@ -78,6 +90,13 @@ public class RegistrationFragment extends Fragment {
 
     private static boolean isEmpty(EditText editText){
         return editText.getText().toString().matches("");
+    }
+
+    private DatabaseHelper getHelper() {
+        if (mDBHelper == null) {
+            mDBHelper = OpenHelperManager.getHelper(getActivity(),DatabaseHelper.class);
+        }
+        return mDBHelper;
     }
 
 }
