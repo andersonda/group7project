@@ -40,20 +40,12 @@ public class RegistrationFragment extends Fragment {
         mSwitchWeight = v.findViewById(R.id.register_weight_switch);
         mSwitchSex = v.findViewById(R.id.register_sex_switch);
         mSubmitButton = v.findViewById(R.id.register_submit);
+
+
         mSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               User mUser = new User(
-                        mEditFname.getText().toString(),
-                        mEditLname.getText().toString(),
-                        Double.parseDouble(mEditWeight.getText().toString()),
-                        Double.parseDouble(mEditHeight.getText().toString()),
-                        Integer.parseInt(mEditAge.getText().toString()),
-                        mSwitchSex.isActivated()
-                );
-                mUser.save();
-
-                Intent intent = new Intent(getActivity(), TestUserDataActivity.class);
+                Intent intent = HomeActivity.newIntent(getActivity());
                 startActivity(intent);
             }
         });

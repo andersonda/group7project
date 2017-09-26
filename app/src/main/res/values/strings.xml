@@ -16,4 +16,5 @@
     <string name="height_hint">1.8</string>
     <string name="submit_button">Submit</string>
     <string name="register_male_female">Female/Male</string>
+    <string name="title_activity_home">HomeActivity</string>
 </resources>
