@@ -59,20 +59,19 @@
             android:layout_column="1"
             android:layout_marginStart="8dp"
             android:inputType="number"/>
-        <TextView
-            style="?android:listSeparatorTextViewStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/register_feet_meters"
-            android:layout_row="3"
-            android:layout_column="0"/>
         <Switch
             android:id="@+id/register_height_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="3"
-            android:layout_column="1"
-            android:layout_marginStart="8dp"/>
+            android:layout_column="0"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:showText="true"
+            android:textOff="Feet"
+            android:textOn="Meters"
+            android:thumb="@color/colorAccent"/>
         <TextView
             style="?android:listSeparatorTextViewStyle"
             android:layout_width="wrap_content"
@@ -88,21 +87,20 @@
             android:layout_row="4"
             android:layout_column="1"
             android:layout_marginStart="8dp"
-            android:inputType="numberDecimal"/>
-        <TextView
-            style="?android:listSeparatorTextViewStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/register_pounds_kilo"
-            android:layout_row="5"
-            android:layout_column="0"/>
+            android:inputType="numberDecimal"/>>
         <Switch
             android:id="@+id/register_weight_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="5"
-            android:layout_column="1"
-            android:layout_marginStart="8dp"/>
+            android:layout_column="0"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:showText="true"
+            android:textOff="Pounds"
+            android:textOn="Kilos"
+            android:thumb="@color/colorAccent"/>
         <TextView
             style="?android:listSeparatorTextViewStyle"
             android:layout_width="wrap_content"
