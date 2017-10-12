@@ -19,19 +19,6 @@
             </intent-filter>
         </activity>
 
-        <meta-data
-            android:name="DATABASE"
-            android:value="exercise.db"/>
-        <meta-data
-            android:name="VERSION"
-            android:value="2"/>
-        <meta-data
-            android:name="QUERY_LOG"
-            android:value="true"/>
-        <meta-data
-            android:name="DOMAIN_PACKAGE_NAME"
-            android:value="edu.ecu.cs.exerciseapplication"/>
-
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"

@@ -17,4 +17,10 @@
     <string name="submit_button">Submit</string>
     <string name="register_male_female">Female/Male</string>
     <string name="title_activity_home">HomeActivity</string>
+    <string name="feet">Feet</string>
+    <string name="meters">Meters</string>
+    <string name="pounds">Pounds</string>
+    <string name="kilos">Kilos</string>
+    <string name="ft">ft</string>
+    <string name="lb">lb</string>
 </resources>
