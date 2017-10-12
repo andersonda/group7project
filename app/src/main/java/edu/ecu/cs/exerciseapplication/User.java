@@ -6,6 +6,9 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.util.UUID;
 
+import java.io.File;
+import java.util.UUID;
+
 /**
  * Created by danderson on 9/11/17.
  */
@@ -171,5 +174,10 @@ public class User{
 
     public static double convertLBtoKG(double lb){
         return lb / KG_TO_LB;
+    }
+
+    public String getPhotoFilename(){
+        //return "IMG_" + getId().toString() + ".jpg";
+        return "IMG_test.jpg";
     }
 }
