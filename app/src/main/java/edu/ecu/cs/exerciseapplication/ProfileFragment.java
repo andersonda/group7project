@@ -3,6 +3,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -16,6 +17,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
+
 import java.io.File;
 import java.util.List;
 
@@ -31,10 +34,20 @@ public class ProfileFragment extends Fragment {
     private static final int REQUEST_PHOTO=2;
     private static final String TAG="ProfileFragment";
 
+    private TextView mTVName, mTVAge, mTVHeight, mTVWeight;
+
+    private SQLiteDatabase mDatabase;
+
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        mUser = new User(getActivity(), "Hunter","Smith", 160.00,5.8,28,true);
+        mDatabase = new ExerciseDBHelper(getActivity().getApplicationContext()).getReadableDatabase();
+
+        try (UserCursorWrapper cursorWrapper = UserCursorWrapper.queryUser(mDatabase)) {
+            cursorWrapper.moveToFirst();
+            mUser = cursorWrapper.getUser();
+        }
+
         File filesDir = getActivity().getFilesDir();
         mProfilePhoto = new File(filesDir, mUser.getPhotoFilename());
     }
@@ -72,6 +85,18 @@ public class ProfileFragment extends Fragment {
 
         mPhotoView = v.findViewById(R.id.photo_view);
         //updatePhotoView();
+
+        mTVName = v.findViewById(R.id.name_value);
+        mTVName.setText(mUser.getmFirstName() + " " + mUser.getmLastName());
+
+        mTVAge = v.findViewById(R.id.age_value);
+        mTVAge.setText("" + mUser.getmAge());
+
+        mTVHeight = v.findViewById(R.id.height_value);
+        mTVHeight.setText("" + mUser.getmHeight());
+
+        mTVWeight = v.findViewById(R.id.weight_value);
+        mTVWeight.setText("" + mUser.getmWeight());
 
         return v;
     }

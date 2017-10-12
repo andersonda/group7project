@@ -1,6 +1,9 @@
 package edu.ecu.cs.exerciseapplication;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteDatabaseLockedException;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,6 +17,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static edu.ecu.cs.exerciseapplication.ExerciseDBSchema.*;
+
 /**
  * Created by danderson on 9/12/17.
  */
@@ -24,6 +29,8 @@ public class RegistrationFragment extends Fragment {
     private Switch mSwitchWeight, mSwitchHeight, mSwitchSex;
     private Button mSubmitButton;
     private TextView mWeightTextView;
+
+    private SQLiteDatabase mDatabase;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -72,7 +79,6 @@ public class RegistrationFragment extends Fragment {
                         weight = User.convertKGtoLB(weight);
                     }
                     User mUser = new User(
-                            getActivity(),
                             mEditFname.getText().toString(),
                             mEditLname.getText().toString(),
                             weight,
@@ -80,6 +86,19 @@ public class RegistrationFragment extends Fragment {
                             Integer.parseInt(mEditAge.getText().toString()),
                             mSwitchSex.isActivated()
                     );
+
+                    mDatabase = new ExerciseDBHelper(getActivity().getApplicationContext())
+                            .getWritableDatabase();
+
+                    ContentValues values = new ContentValues();
+                    values.put(UserTable.Cols.FIRST, mUser.getmFirstName());
+                    values.put(UserTable.Cols.LAST, mUser.getmLastName());
+                    values.put(UserTable.Cols.WEIGHT, mUser.getmWeight());
+                    values.put(UserTable.Cols.HEIGHT, mUser.getmHeight());
+                    values.put(UserTable.Cols.AGE, mUser.getmAge());
+                    values.put(UserTable.Cols.GENDER, mUser.ismIsMale() ? 1 : 0);
+
+                    mDatabase.insert(UserTable.NAME, null, values);
 
                     Intent intent = HomeActivity.newIntent(getActivity());
                     startActivity(intent);

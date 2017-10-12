@@ -15,9 +15,6 @@ import java.util.UUID;
 
 public class User{
 
-    private Context mContext;
-    private SQLiteDatabase mDatabase;
-
     private String mFirstName;
 
     private String mLastName;
@@ -39,27 +36,13 @@ public class User{
     private static final double KG_TO_LB = 2.20462;
     private static final double M_TO_IN = 39.3701;
 
-    public User(Context context, String mFirstName, String mLastName, double mWeight, double mHeight, int mAge, boolean mIsMale) {
+    public User(String mFirstName, String mLastName, double mWeight, double mHeight, int mAge, boolean mIsMale) {
         this.mFirstName = mFirstName;
         this.mLastName = mLastName;
         this.mWeight = mWeight;
         this.mHeight = mHeight;
         this.mAge = mAge;
         this.mIsMale = mIsMale;
-
-        mContext = context.getApplicationContext();
-        mDatabase = new ExerciseDBHelper(mContext)
-                .getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put(ExerciseDBSchema.UserTable.Cols.FIRST, mFirstName);
-        values.put(ExerciseDBSchema.UserTable.Cols.LAST, mLastName);
-        values.put(ExerciseDBSchema.UserTable.Cols.WEIGHT, mWeight);
-        values.put(ExerciseDBSchema.UserTable.Cols.HEIGHT, mHeight);
-        values.put(ExerciseDBSchema.UserTable.Cols.AGE, mAge);
-        values.put(ExerciseDBSchema.UserTable.Cols.GENDER, mIsMale ? 1 : 0);
-
-        mDatabase.insert(ExerciseDBSchema.UserTable.NAME, null, values);
     }
 
     public String getmFirstName() {
