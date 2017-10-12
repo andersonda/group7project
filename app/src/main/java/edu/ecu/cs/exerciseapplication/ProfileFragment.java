@@ -34,7 +34,7 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        mUser = new User("Hunter","Smith", 160.00,5.8,28,true);
+        mUser = new User(getActivity(), "Hunter","Smith", 160.00,5.8,28,true);
         File filesDir = getActivity().getFilesDir();
         mProfilePhoto = new File(filesDir, mUser.getPhotoFilename());
     }
