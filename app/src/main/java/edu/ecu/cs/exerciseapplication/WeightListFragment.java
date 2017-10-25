@@ -9,6 +9,7 @@ import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -48,24 +49,36 @@ public class WeightListFragment extends Fragment{
     private class WeightHolder extends RecyclerView.ViewHolder{
         private TextView mWeightTextView;
         private TextView mDateTextView;
+        private ImageView mWeightIcon;
 
         private Weight mWeight;
+        private Double mLastWeight;
 
-        public WeightHolder(LayoutInflater inflater, ViewGroup parent){
+        public WeightHolder(LayoutInflater inflater, ViewGroup parent, Double lastWeight){
             super(inflater.inflate(R.layout.list_item_weight, parent, false));
             mWeightTextView = itemView.findViewById(R.id.weight_number);
             mDateTextView = itemView.findViewById(R.id.weight_date);
+            mWeightIcon = itemView.findViewById(R.id.weight_icon);
+            mLastWeight = lastWeight;
         }
 
         public void bind(Weight weight){
             mWeight = weight;
             mWeightTextView.setText("" + mWeight.getmWeight());
             mDateTextView.setText(mWeight.getmLogTime().toString());
+            if(weight.getmWeight() < mLastWeight){
+                mWeightIcon.setBackgroundResource(R.mipmap.ic_weight_decrease);
+            }
+            else{
+                mWeightIcon.setBackgroundResource(R.mipmap.ic_weight_increase);
+            }
         }
     }
 
     private class WeightAdapter extends RecyclerView.Adapter<WeightHolder>{
         private List<Weight> mWeights;
+
+        private Double lastWeight = 0.0;
 
         public WeightAdapter(List<Weight> weights){
             mWeights = weights;
@@ -75,12 +88,13 @@ public class WeightListFragment extends Fragment{
         public WeightHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
 
-            return new WeightHolder(layoutInflater, parent);
+            return new WeightHolder(layoutInflater, parent, lastWeight);
         }
 
         @Override
         public void onBindViewHolder(WeightHolder holder, int position) {
             Weight weight = mWeights.get(position);
+            lastWeight = weight.getmWeight();
             holder.bind(weight);
         }
 
