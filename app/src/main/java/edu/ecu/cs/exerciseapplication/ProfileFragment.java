@@ -97,6 +97,13 @@ public class ProfileFragment extends Fragment {
 
         mTVWeight = v.findViewById(R.id.weight_value);
         mTVWeight.setText("" + mUser.getmWeight());
+        mTVWeight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = WeightListActivity.newIntent(getActivity());
+                startActivity(intent);
+            }
+        });
 
         return v;
     }
