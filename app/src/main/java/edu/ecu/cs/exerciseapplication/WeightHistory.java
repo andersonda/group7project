@@ -26,7 +26,7 @@ public class WeightHistory {
     private WeightHistory(Context context) {
         mWeights = new ArrayList<>();
 
-        // dummy data to be replaced with database
+        // dummy data to be replaced with database data
         Random r = new Random();
         for(int i = 0; i < 100; i++){
             Weight weight = new Weight(r.nextDouble());

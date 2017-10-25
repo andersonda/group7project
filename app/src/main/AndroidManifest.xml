@@ -28,6 +28,9 @@
         <activity
             android:name=".ProfileActivity">
         </activity>
+        <activity
+            android:name=".WeightListActivity">
+        </activity>
         <provider
             android:authorities="edu.ecu.cs.exerciseapplication.fileprovider"
             android:name="android.support.v4.content.FileProvider"
