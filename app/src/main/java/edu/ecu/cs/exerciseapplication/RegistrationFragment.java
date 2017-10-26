@@ -107,7 +107,7 @@ public class RegistrationFragment extends Fragment {
                     ContentValues weightValues = new ContentValues();
                     weightValues.put(WeightTable.Cols.UUID, initialWeight.getmId().toString());
                     weightValues.put(WeightTable.Cols.WEIGHT, initialWeight.getmWeight());
-                    weightValues.put(WeightTable.Cols.DATE, initialWeight.getmLogTime().toString());
+                    weightValues.put(WeightTable.Cols.DATE, initialWeight.getmLogTime().getTime());
 
                     mDatabase.insert(WeightTable.NAME, null, weightValues);
 

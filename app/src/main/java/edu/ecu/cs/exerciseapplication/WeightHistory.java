@@ -83,7 +83,7 @@ public class WeightHistory {
         ContentValues values = new ContentValues();
         values.put(WeightTable.Cols.UUID, weight.getmId().toString());
         values.put(WeightTable.Cols.WEIGHT, weight.getmWeight().toString());
-        values.put(WeightTable.Cols.DATE, weight.getmLogTime().toString());
+        values.put(WeightTable.Cols.DATE, weight.getmLogTime().getTime());
 
         return values;
     }
