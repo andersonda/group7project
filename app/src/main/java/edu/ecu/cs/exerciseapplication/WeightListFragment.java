@@ -19,8 +19,14 @@ import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.PointsGraphSeries;
+
 import org.w3c.dom.Text;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -36,6 +42,8 @@ public class WeightListFragment extends Fragment{
     private RecyclerView mWeightRecyclerView;
     private WeightAdapter mAdapter;
 
+    private GraphView mGraphView;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,8 +58,12 @@ public class WeightListFragment extends Fragment{
         mWeightRecyclerView = view.findViewById(R.id.weight_recycler_view);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        layoutManager.setReverseLayout(true);
+        //layoutManager.setReverseLayout(true);
         mWeightRecyclerView.setLayoutManager(layoutManager);
+
+        mGraphView = view.findViewById(R.id.weight_graph);
+        mGraphView.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(getActivity()));
+        mGraphView.getGridLabelRenderer().setNumHorizontalLabels(3);
 
         updateUI();
 
@@ -95,6 +107,22 @@ public class WeightListFragment extends Fragment{
     private void updateUI() {
         WeightHistory history = WeightHistory.get(getActivity());
         List<Weight> weights = history.getWeights();
+
+        DataPoint[] points = new DataPoint[weights.size()];
+        for(int i = 0; i < weights.size(); i++){
+            Date date = weights.get(i).getmLogTime();
+            Double weight = weights.get(i).getmWeight();
+            points[i] = new DataPoint(date, weight);
+        }
+
+        PointsGraphSeries<DataPoint> series = new PointsGraphSeries<>(points);
+        mGraphView.addSeries(series);
+        series.setShape(PointsGraphSeries.Shape.POINT);
+
+        mGraphView.getViewport().setMinX(weights.get(0).getmLogTime().getTime());
+        mGraphView.getViewport().setMaxX(weights.get(weights.size() - 1).getmLogTime().getTime());
+        mGraphView.getViewport().setXAxisBoundsManual(true);
+        mGraphView.getGridLabelRenderer().setHumanRounding(false);
 
         if(mAdapter == null){
             mAdapter = new WeightAdapter(weights);
