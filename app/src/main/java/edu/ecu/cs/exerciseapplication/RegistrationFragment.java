@@ -17,6 +17,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Date;
+
 import static edu.ecu.cs.exerciseapplication.ExerciseDBSchema.*;
 
 /**
@@ -99,6 +101,15 @@ public class RegistrationFragment extends Fragment {
                     values.put(UserTable.Cols.GENDER, mUser.ismIsMale() ? 1 : 0);
 
                     mDatabase.insert(UserTable.NAME, null, values);
+
+                    Weight initialWeight = new Weight(weight);
+
+                    ContentValues weightValues = new ContentValues();
+                    weightValues.put(WeightTable.Cols.UUID, initialWeight.getmId().toString());
+                    weightValues.put(WeightTable.Cols.WEIGHT, initialWeight.getmWeight());
+                    weightValues.put(WeightTable.Cols.DATE, initialWeight.getmLogTime().toString());
+
+                    mDatabase.insert(WeightTable.NAME, null, weightValues);
 
                     Intent intent = HomeActivity.newIntent(getActivity());
                     startActivity(intent);
