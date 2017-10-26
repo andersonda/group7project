@@ -68,6 +68,7 @@ public class WeightListFragment extends Fragment{
         mGraphView.addSeries(mSeries);
         mSeries.setShape(PointsGraphSeries.Shape.POINT);
         mGraphView.getGridLabelRenderer().setNumHorizontalLabels(3);
+        mGraphView.getGridLabelRenderer().setNumVerticalLabels(5);
 
         updateUI();
 
