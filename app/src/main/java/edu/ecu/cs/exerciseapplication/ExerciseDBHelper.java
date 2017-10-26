@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import edu.ecu.cs.exerciseapplication.ExerciseDBSchema.UserTable;
 
+import static edu.ecu.cs.exerciseapplication.ExerciseDBSchema.*;
+
 /**
  * Created by danderson on 10/3/17.
  */
@@ -27,6 +29,12 @@ public class ExerciseDBHelper extends SQLiteOpenHelper {
                 + UserTable.Cols.WEIGHT + ", "
                 + UserTable.Cols.HEIGHT + ", "
                 + UserTable.Cols.GENDER + ")"
+
+        );
+        sqLiteDatabase.execSQL("create table " + WeightTable.NAME + "("
+                + WeightTable.Cols.UUID + ", "
+                + WeightTable.Cols.WEIGHT + ", "
+                + WeightTable.Cols.DATE + ")"
 
         );
     }

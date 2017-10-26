@@ -25,6 +25,11 @@ public class Weight {
         this.mWeight = 0.0;
     }
 
+    public Weight(UUID id){
+        mId = id;
+        mLogTime = new Date();
+    }
+
     public UUID getmId() {
         return mId;
     }
@@ -35,5 +40,13 @@ public class Weight {
 
     public Double getmWeight() {
         return mWeight;
+    }
+
+    public void setmLogTime(Date mLogTime) {
+        this.mLogTime = mLogTime;
+    }
+
+    public void setmWeight(Double mWeight) {
+        this.mWeight = mWeight;
     }
 }

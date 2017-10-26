@@ -67,6 +67,7 @@ public class WeightListFragment extends Fragment{
         if(requestCode == REQUEST_WEIGHT){
             WeightHistory.get(getActivity()).addWeight(
                     new Weight((Double)data.getSerializableExtra(LogWeightFragment.EXTRA_WEIGHT)));
+
             updateUI();
         }
     }
@@ -95,8 +96,13 @@ public class WeightListFragment extends Fragment{
         WeightHistory history = WeightHistory.get(getActivity());
         List<Weight> weights = history.getWeights();
 
-        mAdapter = new WeightAdapter(weights);
-        mWeightRecyclerView.setAdapter(mAdapter);
+        if(mAdapter == null){
+            mAdapter = new WeightAdapter(weights);
+            mWeightRecyclerView.setAdapter(mAdapter);
+        } else{
+            mAdapter.setWeights(weights);
+            mAdapter.notifyDataSetChanged();
+        }
     }
 
     private class WeightHolder extends RecyclerView.ViewHolder{
@@ -154,6 +160,10 @@ public class WeightListFragment extends Fragment{
         @Override
         public int getItemCount() {
             return mWeights.size();
+        }
+
+        public void setWeights(List<Weight> weights){
+            mWeights = weights;
         }
     }
 }
