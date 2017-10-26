@@ -39,7 +39,10 @@ public class WeightListFragment extends Fragment{
         View view = inflater.inflate(R.layout.fragment_weight_list, container, false);
 
         mWeightRecyclerView = view.findViewById(R.id.weight_recycler_view);
-        mWeightRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setReverseLayout(true);
+        mWeightRecyclerView.setLayoutManager(layoutManager);
 
         updateUI();
 
