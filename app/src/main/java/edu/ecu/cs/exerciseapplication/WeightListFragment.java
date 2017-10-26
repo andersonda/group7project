@@ -28,6 +28,8 @@ import org.w3c.dom.Text;
 
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
 
 /**
  * Created by danderson on 10/25/17.
@@ -43,6 +45,10 @@ public class WeightListFragment extends Fragment{
     private WeightAdapter mAdapter;
 
     private GraphView mGraphView;
+    private PointsGraphSeries<DataPoint> mSeries = new PointsGraphSeries<>();
+
+    private final android.os.Handler mHandler = new android.os.Handler();
+    private Runnable mUpdateGraph;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -63,6 +69,8 @@ public class WeightListFragment extends Fragment{
 
         mGraphView = view.findViewById(R.id.weight_graph);
         mGraphView.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(getActivity()));
+        mGraphView.addSeries(mSeries);
+        mSeries.setShape(PointsGraphSeries.Shape.POINT);
         mGraphView.getGridLabelRenderer().setNumHorizontalLabels(3);
 
         updateUI();
@@ -82,6 +90,12 @@ public class WeightListFragment extends Fragment{
 
             updateUI();
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateUI();
     }
 
     @Override
@@ -108,16 +122,22 @@ public class WeightListFragment extends Fragment{
         WeightHistory history = WeightHistory.get(getActivity());
         List<Weight> weights = history.getWeights();
 
-        DataPoint[] points = new DataPoint[weights.size()];
+        final DataPoint[] points = new DataPoint[weights.size()];
         for(int i = 0; i < weights.size(); i++){
             Date date = weights.get(i).getmLogTime();
             Double weight = weights.get(i).getmWeight();
             points[i] = new DataPoint(date, weight);
         }
 
-        PointsGraphSeries<DataPoint> series = new PointsGraphSeries<>(points);
-        mGraphView.addSeries(series);
-        series.setShape(PointsGraphSeries.Shape.POINT);
+        mUpdateGraph = new Runnable() {
+            @Override
+            public void run() {
+                mSeries.resetData(points);
+                mHandler.post(this);
+            }
+        };
+
+        mHandler.post(mUpdateGraph);
 
         mGraphView.getViewport().setMinX(weights.get(0).getmLogTime().getTime());
         mGraphView.getViewport().setMaxX(weights.get(weights.size() - 1).getmLogTime().getTime());
