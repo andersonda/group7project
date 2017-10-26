@@ -19,7 +19,7 @@ public class RegistrationActivity extends SingleFragmentActivity {
         SQLiteDatabase mDatabase = new ExerciseDBHelper(getApplicationContext()).getReadableDatabase();
         try (UserCursorWrapper cursorWrapper = UserCursorWrapper.queryUser(mDatabase)) {
             if(cursorWrapper.getCount() == 1){
-                Intent intent = ProfileActivity.newIntent(getApplicationContext());
+                Intent intent = HomeActivity.newIntent(getApplicationContext());
                 startActivity(intent);
                 finish();
             }
