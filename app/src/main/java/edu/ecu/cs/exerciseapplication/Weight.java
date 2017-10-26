@@ -19,6 +19,12 @@ public class Weight {
         this.mWeight = weight;
     }
 
+    public Weight(){
+        this.mId = UUID.randomUUID();
+        this.mLogTime = new Date();
+        this.mWeight = 0.0;
+    }
+
     public UUID getmId() {
         return mId;
     }

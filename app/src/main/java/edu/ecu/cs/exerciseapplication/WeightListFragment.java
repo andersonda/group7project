@@ -1,16 +1,21 @@
 package edu.ecu.cs.exerciseapplication;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,6 +28,10 @@ import java.util.List;
  */
 
 public class WeightListFragment extends Fragment{
+
+    private static final String DIALOG_DATE = "DialogDate";
+
+    private static final int REQUEST_WEIGHT = 0;
 
     private RecyclerView mWeightRecyclerView;
     private WeightAdapter mAdapter;
@@ -50,9 +59,36 @@ public class WeightListFragment extends Fragment{
     }
 
     @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode != Activity.RESULT_OK){
+            return;
+        }
+
+        if(requestCode == REQUEST_WEIGHT){
+            WeightHistory.get(getActivity()).addWeight(
+                    new Weight((Double)data.getSerializableExtra(LogWeightFragment.EXTRA_WEIGHT)));
+            updateUI();
+        }
+    }
+
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.fragment_weight_list, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.new_weight:
+                FragmentManager manager = getFragmentManager();
+                LogWeightFragment dialog = LogWeightFragment.newInstance();
+                dialog.setTargetFragment(WeightListFragment.this, REQUEST_WEIGHT);
+                dialog.show(manager, DIALOG_DATE);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void updateUI() {

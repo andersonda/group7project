@@ -28,10 +28,6 @@ public class WeightHistory {
 
         // dummy data to be replaced with database data
         Random r = new Random();
-        for(int i = 0; i < 100; i++){
-            Weight weight = new Weight(r.nextDouble());
-            mWeights.add(weight);
-        }
     }
 
     public List<Weight> getWeights() {
@@ -45,5 +41,9 @@ public class WeightHistory {
             }
         }
         return null;
+    }
+
+    public void addWeight(Weight weight){
+        mWeights.add(weight);
     }
 }

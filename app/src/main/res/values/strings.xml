@@ -24,4 +24,5 @@
     <string name="ft">ft</string>
     <string name="lb">lb</string>
     <string name="log_weight">Log Weight</string>
+    <string name="weight_dialog_title">Enter New Weight:</string>
 </resources>
