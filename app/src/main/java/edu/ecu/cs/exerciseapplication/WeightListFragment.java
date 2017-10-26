@@ -8,14 +8,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,12 +22,10 @@ import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.PointsGraphSeries;
 
-import org.w3c.dom.Text;
 
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Handler;
-import java.util.logging.LogRecord;
+
 
 /**
  * Created by danderson on 10/25/17.
@@ -64,7 +60,7 @@ public class WeightListFragment extends Fragment{
         mWeightRecyclerView = view.findViewById(R.id.weight_recycler_view);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        //layoutManager.setReverseLayout(true);
+        layoutManager.setReverseLayout(true);
         mWeightRecyclerView.setLayoutManager(layoutManager);
 
         mGraphView = view.findViewById(R.id.weight_graph);
@@ -151,6 +147,14 @@ public class WeightListFragment extends Fragment{
             mAdapter.setWeights(weights);
             mAdapter.notifyDataSetChanged();
         }
+
+        mWeightRecyclerView.post(new Runnable() {
+            @Override
+            public void run() {
+                // Call smooth scroll
+                mWeightRecyclerView.smoothScrollToPosition(mAdapter.getItemCount());
+            }
+        });
     }
 
     private class WeightHolder extends RecyclerView.ViewHolder{
