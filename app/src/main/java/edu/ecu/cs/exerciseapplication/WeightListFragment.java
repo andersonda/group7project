@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.GridLabelRenderer;
 import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.PointsGraphSeries;
@@ -60,7 +61,6 @@ public class WeightListFragment extends Fragment{
         View view = inflater.inflate(R.layout.fragment_weight_list, container, false);
 
         mWeightRecyclerView = view.findViewById(R.id.weight_recycler_view);
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setReverseLayout(true);
         mWeightRecyclerView.setLayoutManager(layoutManager);
@@ -69,8 +69,10 @@ public class WeightListFragment extends Fragment{
         mGraphView.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(getActivity()));
         mGraphView.addSeries(mSeries);
         mSeries.setShape(PointsGraphSeries.Shape.POINT);
-        mGraphView.getGridLabelRenderer().setNumHorizontalLabels(3);
-        mGraphView.getGridLabelRenderer().setNumVerticalLabels(5);
+        GridLabelRenderer gridLabelRenderer = mGraphView.getGridLabelRenderer();
+        gridLabelRenderer.setNumHorizontalLabels(3);
+        gridLabelRenderer.setNumVerticalLabels(5);
+        gridLabelRenderer.setPadding(48);
 
         updateUI();
 
