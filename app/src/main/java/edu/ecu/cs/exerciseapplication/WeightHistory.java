@@ -90,8 +90,12 @@ public class WeightHistory {
 
     public void addWeight(Weight weight){
         ContentValues values = getContentValues(weight);
-
         mDatabase.insert(WeightTable.NAME, null, values);
+
+        // also update current weight in user table
+        ContentValues newWeight = new ContentValues();
+        newWeight.put(UserTable.Cols.WEIGHT, weight.getmWeight());
+        mDatabase.update(UserTable.NAME, newWeight, null, null);
     }
 
     private WeightCursorWrapper queryWeights(String whereClause, String[] whereArgs){
