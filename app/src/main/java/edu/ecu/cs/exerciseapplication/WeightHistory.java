@@ -107,4 +107,14 @@ public class WeightHistory {
 
         return new WeightCursorWrapper(cursor);
     }
+
+    /**
+     * clear all weight history besides the most recent entry
+     * @param id
+     */
+    public void clearWeightHistory(UUID id){
+        String whereClause = WeightTable.Cols.UUID + " != ?";
+        String[] whereArgs = new String[]{id.toString()};
+        mDatabase.delete(WeightTable.NAME, whereClause, whereArgs);
+    }
 }

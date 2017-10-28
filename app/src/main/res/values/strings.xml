@@ -25,4 +25,7 @@
     <string name="lb">lb</string>
     <string name="log_weight">Log Weight</string>
     <string name="weight_dialog_title">Enter New Weight:</string>
+    <string name="weight_delete_all">Clear Weight History</string>
+    <string name="weight_clear_dialog">Clear Weight History</string>
+    <string name="weight_clear_alert">Are you sure you want to clear all weight history? This cannot be reversed!</string>
 </resources>

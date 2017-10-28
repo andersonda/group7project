@@ -34,8 +34,10 @@ import java.util.List;
 public class WeightListFragment extends Fragment{
 
     private static final String DIALOG_DATE = "DialogDate";
+    private static final String DIALOG_CLEAR = "DialogClear";
 
     private static final int REQUEST_WEIGHT = 0;
+    private static final int REQUEST_CLEAR = 1;
 
     private RecyclerView mWeightRecyclerView;
     private WeightAdapter mAdapter;
@@ -87,6 +89,13 @@ public class WeightListFragment extends Fragment{
 
             updateUI();
         }
+
+        if(requestCode == REQUEST_CLEAR){
+            WeightHistory history = WeightHistory.get(getActivity());
+            List<Weight> weights = history.getWeights();
+            WeightHistory.get(getActivity()).clearWeightHistory(weights.get(weights.size() - 1).getmId());
+            updateUI();
+        }
     }
 
     @Override
@@ -103,13 +112,18 @@ public class WeightListFragment extends Fragment{
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        FragmentManager manager = getFragmentManager();
         switch(item.getItemId()){
             case R.id.new_weight:
-                FragmentManager manager = getFragmentManager();
-                LogWeightFragment dialog = LogWeightFragment.newInstance();
-                dialog.setTargetFragment(WeightListFragment.this, REQUEST_WEIGHT);
-                dialog.show(manager, DIALOG_DATE);
+                LogWeightFragment logDialog = LogWeightFragment.newInstance();
+                logDialog.setTargetFragment(WeightListFragment.this, REQUEST_WEIGHT);
+                logDialog.show(manager, DIALOG_DATE);
                 return true;
+            case R.id.delete_all:
+                ClearWeightHistoryFragment clearDialog = ClearWeightHistoryFragment.newInstance();
+                clearDialog.setTargetFragment(WeightListFragment.this, REQUEST_CLEAR);
+                clearDialog.show(manager, DIALOG_CLEAR);
+
             default:
                 return super.onOptionsItemSelected(item);
         }
