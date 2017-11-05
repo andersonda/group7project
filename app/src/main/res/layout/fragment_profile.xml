@@ -40,7 +40,7 @@
             android:layout_gravity="center"
             android:columnCount="2"
             android:orientation="horizontal"
-            android:rowCount="4">
+            android:rowCount="5">
 
 
             <TextView
@@ -115,6 +115,8 @@
                 android:text="6' 0&quot;"
                 android:textColor="@color/exercise1"/>
 
+
+
             <TextView
                 android:id="@+id/weight_label"
                 android:layout_margin="5dp"
@@ -157,6 +159,31 @@
                     app:srcCompat="@drawable/ic_add_weight"/>
 
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/step_goal_label"
+                android:layout_margin="5dp"
+                android:layout_column="0"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_row="4"
+                android:background="@color/exercise4"
+                android:gravity="center"
+                android:text="Daily Step Goal"
+                android:textColor="@color/exercise1"/>
+
+            <EditText
+                android:id="@+id/step_goal_value"
+                android:layout_margin="5dp"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_row="4"
+                android:background="@color/exercise4"
+                android:gravity="center"
+                android:text="5000"
+                android:textColor="@color/exercise1"/>
+            
         </GridLayout>
     </LinearLayout>
 </LinearLayout>

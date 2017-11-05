@@ -28,8 +28,8 @@ public class ExerciseDBHelper extends SQLiteOpenHelper {
                 + UserTable.Cols.AGE + ", "
                 + UserTable.Cols.WEIGHT + ", "
                 + UserTable.Cols.HEIGHT + ", "
-                + UserTable.Cols.GENDER + ")"
-
+                + UserTable.Cols.GENDER + ", "
+                + UserTable.Cols.STEP_GOAL + ")"
         );
         sqLiteDatabase.execSQL("create table " + WeightTable.NAME + "("
                 + WeightTable.Cols.UUID + ", "

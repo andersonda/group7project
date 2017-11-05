@@ -86,7 +86,8 @@ public class RegistrationFragment extends Fragment {
                             weight,
                             Double.parseDouble(mEditHeight.getText().toString()),
                             Integer.parseInt(mEditAge.getText().toString()),
-                            mSwitchSex.isActivated()
+                            mSwitchSex.isActivated(),
+                            User.DEFAULT_STEP_GOAL
                     );
 
                     mDatabase = new ExerciseDBHelper(getActivity().getApplicationContext())
@@ -99,6 +100,7 @@ public class RegistrationFragment extends Fragment {
                     values.put(UserTable.Cols.HEIGHT, mUser.getmHeight());
                     values.put(UserTable.Cols.AGE, mUser.getmAge());
                     values.put(UserTable.Cols.GENDER, mUser.ismIsMale() ? 1 : 0);
+                    values.put(UserTable.Cols.STEP_GOAL, mUser.getDailyStepGoal());
 
                     mDatabase.insert(UserTable.NAME, null, values);
 

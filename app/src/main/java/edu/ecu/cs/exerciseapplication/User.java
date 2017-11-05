@@ -33,16 +33,21 @@ public class User{
 
     private boolean mIsMale;
 
+    private int dailyStepGoal;
+
     private static final double KG_TO_LB = 2.20462;
     private static final double M_TO_IN = 39.3701;
 
-    public User(String mFirstName, String mLastName, double mWeight, double mHeight, int mAge, boolean mIsMale) {
+    public static final int DEFAULT_STEP_GOAL = 5000;
+
+    public User(String mFirstName, String mLastName, double mWeight, double mHeight, int mAge, boolean mIsMale, int dailyStepGoal) {
         this.mFirstName = mFirstName;
         this.mLastName = mLastName;
         this.mWeight = mWeight;
         this.mHeight = mHeight;
         this.mAge = mAge;
         this.mIsMale = mIsMale;
+        this.dailyStepGoal = dailyStepGoal;
     }
 
     public String getmFirstName() {
@@ -99,6 +104,14 @@ public class User{
 
     public void setmIsMale(boolean mIsMale) {
         this.mIsMale = mIsMale;
+    }
+
+    public int getDailyStepGoal() {
+        return dailyStepGoal;
+    }
+
+    public void setDailyStepGoal(int dailyStepGoal) {
+        this.dailyStepGoal = dailyStepGoal;
     }
 
     /**

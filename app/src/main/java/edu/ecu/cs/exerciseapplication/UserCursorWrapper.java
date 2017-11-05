@@ -22,8 +22,9 @@ public class UserCursorWrapper extends CursorWrapper {
         double height = getDouble(getColumnIndex(UserTable.Cols.HEIGHT));
         int age = getInt(getColumnIndex(UserTable.Cols.AGE));
         boolean isMale = getInt(getColumnIndex(UserTable.Cols.GENDER)) == 1;
+        int stepGoal = getInt(getColumnIndex(UserTable.Cols.STEP_GOAL));
 
-        return new User(firstName, lastName, weight, height, age, isMale);
+        return new User(firstName, lastName, weight, height, age, isMale, stepGoal);
     }
 
     protected static UserCursorWrapper queryUser(SQLiteDatabase db){

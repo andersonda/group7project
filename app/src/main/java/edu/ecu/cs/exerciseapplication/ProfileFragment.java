@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -35,6 +36,8 @@ public class ProfileFragment extends Fragment {
     private static final String TAG="ProfileFragment";
 
     private TextView mTVName, mTVAge, mTVHeight, mTVWeight;
+
+    private EditText mETStepGoal;
 
     private SQLiteDatabase mDatabase;
 
@@ -116,6 +119,8 @@ public class ProfileFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        mETStepGoal = v.findViewById(R.id.step_goal_value);
 
         return v;
     }
