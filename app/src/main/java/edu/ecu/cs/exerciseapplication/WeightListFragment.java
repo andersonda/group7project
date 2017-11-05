@@ -59,7 +59,7 @@ public class WeightListFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_weight_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_graph_list, container, false);
 
         mWeightRecyclerView = view.findViewById(R.id.weight_recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
