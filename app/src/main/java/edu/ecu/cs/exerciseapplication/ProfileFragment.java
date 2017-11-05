@@ -27,7 +27,7 @@ import java.util.List;
  */
 
 public class ProfileFragment extends Fragment {
-    private ImageButton mPhotoButton;
+    private ImageButton mPhotoButton, mLogWeightButton;
     private ImageView mPhotoView;
     private User mUser;
     private File mProfilePhoto;
@@ -107,7 +107,9 @@ public class ProfileFragment extends Fragment {
 
         mTVWeight = v.findViewById(R.id.weight_value);
         mTVWeight.setText("" + mUser.getmWeight());
-        mTVWeight.setOnClickListener(new View.OnClickListener() {
+
+        mLogWeightButton = v.findViewById(R.id.log_weight_button);
+        mLogWeightButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = WeightListActivity.newIntent(getActivity());
