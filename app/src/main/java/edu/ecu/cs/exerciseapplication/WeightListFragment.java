@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -193,7 +194,9 @@ public class WeightListFragment extends Fragment{
         public void bind(Weight weight){
             mWeight = weight;
             mWeightTextView.setText("" + mWeight.getmWeight());
-            mDateTextView.setText(mWeight.getmLogTime().toString());
+            String format = "MMMM dd, yyyy";
+            String formattedDate = DateFormat.format(format, mWeight.getmLogTime()).toString();
+            mDateTextView.setText(formattedDate);
             if(weight.getmWeight() < mLastWeight){
                 mWeightIcon.setBackgroundResource(R.mipmap.ic_weight_decrease);
             }
