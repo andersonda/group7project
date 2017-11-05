@@ -181,9 +181,9 @@
                 android:layout_row="4"
                 android:background="@color/exercise4"
                 android:gravity="center"
-                android:text="5000"
-                android:textColor="@color/exercise1"/>
-            
+                android:textColor="@color/exercise1"
+                android:inputType="number"/>
+
         </GridLayout>
     </LinearLayout>
 </LinearLayout>

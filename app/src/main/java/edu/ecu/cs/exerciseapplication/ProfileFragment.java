@@ -1,5 +1,6 @@
 package edu.ecu.cs.exerciseapplication;
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -11,6 +12,8 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.FileProvider;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +25,8 @@ import android.widget.TextView;
 
 import java.io.File;
 import java.util.List;
+
+import static edu.ecu.cs.exerciseapplication.ExerciseDBSchema.*;
 
 /**
  * Created by hunter on 9/16/17.
@@ -121,6 +126,26 @@ public class ProfileFragment extends Fragment {
         });
 
         mETStepGoal = v.findViewById(R.id.step_goal_value);
+        mETStepGoal.setText(""  + mUser.getDailyStepGoal());
+
+        mETStepGoal.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                ContentValues newDailyStepGoal = new ContentValues();
+                newDailyStepGoal.put(UserTable.Cols.STEP_GOAL, charSequence.toString());
+                mDatabase.update(UserTable.NAME, newDailyStepGoal, null, null);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
         return v;
     }
