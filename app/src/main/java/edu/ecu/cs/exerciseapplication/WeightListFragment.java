@@ -61,12 +61,12 @@ public class WeightListFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_graph_list, container, false);
 
-        mWeightRecyclerView = view.findViewById(R.id.weight_recycler_view);
+        mWeightRecyclerView = view.findViewById(R.id.recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setReverseLayout(true);
         mWeightRecyclerView.setLayoutManager(layoutManager);
 
-        mGraphView = view.findViewById(R.id.weight_graph);
+        mGraphView = view.findViewById(R.id.graph_view);
         mGraphView.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(getActivity()));
         mGraphView.addSeries(mSeries);
         mSeries.setShape(PointsGraphSeries.Shape.POINT);
