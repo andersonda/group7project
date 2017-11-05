@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Exercise Application</string>
+    <string name="app_name">LivEx</string>
 
     <string name="register_welcome">Welcome to Exercise App! Since this is your first time, please fill out some basic personal info.</string>
     <string name="register_fname">First Name:</string>
