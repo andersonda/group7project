@@ -47,9 +47,7 @@ public class ProfileFragment extends Fragment {
             cursorWrapper.moveToFirst();
             mUser = cursorWrapper.getUser();
         }
-
-        File filesDir = getActivity().getFilesDir();
-        mProfilePhoto = new File(filesDir, mUser.getPhotoFilename());
+        mProfilePhoto = mUser.getPhotoFile(getActivity());
     }
 
     @Override
@@ -96,7 +94,7 @@ public class ProfileFragment extends Fragment {
         });
 
         mPhotoView = v.findViewById(R.id.photo_view);
-        //updatePhotoView();
+        updatePhotoView();
 
         mTVName = v.findViewById(R.id.name_value);
         mTVName.setText(mUser.getmFirstName() + " " + mUser.getmLastName());
@@ -120,17 +118,11 @@ public class ProfileFragment extends Fragment {
         return v;
     }
 
-//    public File getPhotoFile(User user){
-//        File filesDir = getActivity().getFilesDir();
-//        return new File(filesDir, user.getPhotoFilename());
-//    }
-
-
     private void updatePhotoView() {
         if(mProfilePhoto == null || !mProfilePhoto.exists()){
             mPhotoView.setImageDrawable(null);
         }else{
-            Bitmap bitmap = PictureUtils.getScaledBitmap(mProfilePhoto.getPath(),mPhotoView.getWidth(),mPhotoView.getHeight());
+            Bitmap bitmap = PictureUtils.getScaledBitmap(mProfilePhoto.getPath(), getActivity());
             mPhotoView.setImageBitmap(bitmap);
         }
     }

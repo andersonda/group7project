@@ -159,8 +159,12 @@ public class User{
         return lb / KG_TO_LB;
     }
 
-    public String getPhotoFilename(){
-        //return "IMG_" + getId().toString() + ".jpg";
-        return "IMG_test.jpg";
+    private String getPhotoFilename(){
+        return "profile_picture.jpg";
+    }
+
+    public File getPhotoFile(Context context){
+        File filesDir = context.getFilesDir();
+        return new File(filesDir, this.getPhotoFilename());
     }
 }
