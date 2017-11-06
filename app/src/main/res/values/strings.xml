@@ -28,4 +28,7 @@
     <string name="weight_delete_all">Clear Weight History</string>
     <string name="weight_clear_dialog">Clear Weight History</string>
     <string name="weight_clear_alert">Are you sure you want to clear all weight history? This cannot be reversed!</string>
-</resources>
+    <string name="edit_step_goal">Edit Step Goal</string>
+    <string name="clear_step_history">Clear Step History</string>
+    <string name="add_steps_entry">Add Steps Entry</string>
+    </resources>
