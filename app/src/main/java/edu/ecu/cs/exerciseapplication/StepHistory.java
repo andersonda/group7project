@@ -113,4 +113,12 @@ public class StepHistory {
         String[] whereArgs = new String[]{id.toString()};
         mDatabase.delete(StepsTable.NAME, whereClause, whereArgs);
     }
+
+    public int getDailyStepGoal(){
+        try (UserCursorWrapper cursorWrapper = UserCursorWrapper.queryUser(mDatabase)) {
+            cursorWrapper.moveToFirst();
+            User user = cursorWrapper.getUser();
+            return user.getDailyStepGoal();
+        }
+    }
 }
