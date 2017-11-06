@@ -28,4 +28,15 @@ public class ExerciseDBSchema {
             public static final String DATE = "date";
         }
     }
+
+    public static final class StepsTable{
+        public static final String NAME = "steps";
+
+        public static final class Cols{
+            public static final String UUID = "uuid";
+            public static final String STEPS = "steps";
+            public static final String DATE = "date";
+            public static final String DAY = "day";
+        }
+    }
 }

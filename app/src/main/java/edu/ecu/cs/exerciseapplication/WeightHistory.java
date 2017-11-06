@@ -19,7 +19,7 @@ import static edu.ecu.cs.exerciseapplication.ExerciseDBSchema.*;
 public class WeightHistory {
     private static WeightHistory sWeightHistory;
 
-    private Context mContext;
+    //private Context mContext;
     private SQLiteDatabase mDatabase;
 
     public static WeightHistory get(Context context){
@@ -30,8 +30,7 @@ public class WeightHistory {
     }
 
     private WeightHistory(Context context) {
-        mContext = context.getApplicationContext();
-        mDatabase = new ExerciseDBHelper(mContext).getWritableDatabase();
+        mDatabase = new ExerciseDBHelper(context.getApplicationContext()).getWritableDatabase();
     }
 
     public List<Weight> getWeights() {
@@ -68,15 +67,6 @@ public class WeightHistory {
         }finally {
             cursor.close();
         }
-    }
-
-    public void updateWeight(Weight weight){
-        String uuidString = weight.getmId().toString();
-        ContentValues values = getContentValues(weight);
-
-        mDatabase.update(WeightTable.NAME, values,
-                WeightTable.Cols.UUID + " = ?",
-                new String[]{uuidString});
     }
 
     private static ContentValues getContentValues(Weight weight){

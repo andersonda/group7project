@@ -37,6 +37,12 @@ public class ExerciseDBHelper extends SQLiteOpenHelper {
                 + WeightTable.Cols.DATE + ")"
 
         );
+        sqLiteDatabase.execSQL("create table " + StepsTable.NAME + "("
+                + StepsTable.Cols.UUID + ", "
+                + StepsTable.Cols.STEPS + ", "
+                + StepsTable.Cols.DATE + ", "
+                + StepsTable.Cols.DAY + ")"
+        );
     }
 
     @Override
