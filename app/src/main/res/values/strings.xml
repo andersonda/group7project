@@ -31,4 +31,5 @@
     <string name="edit_step_goal">Edit Step Goal</string>
     <string name="clear_step_history">Clear Step History</string>
     <string name="add_steps_entry">Add Steps Entry</string>
+    <string name="view_weekly_statistics">View Weekly Statistics</string>
     </resources>
