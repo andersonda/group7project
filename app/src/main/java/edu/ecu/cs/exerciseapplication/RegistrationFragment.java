@@ -115,6 +115,8 @@ public class RegistrationFragment extends Fragment {
 
                     Intent intent = HomeActivity.newIntent(getActivity());
                     startActivity(intent);
+
+                    getActivity().finish();
                 }
 
             }
