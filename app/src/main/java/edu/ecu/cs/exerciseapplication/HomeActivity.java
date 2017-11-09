@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment;
 public class HomeActivity extends SingleFragmentActivity {
 
     @Override
-    public Fragment createFragment() {
+    protected Fragment createFragment() {
         return new HomeFragment();
     }
 

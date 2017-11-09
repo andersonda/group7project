@@ -3,7 +3,6 @@ package edu.ecu.cs.exerciseapplication;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabaseLockedException;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,9 +16,11 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import edu.ecu.cs.exerciseapplication.database.ExerciseDBHelper;
+
+import static edu.ecu.cs.exerciseapplication.database.ExerciseDBSchema.*;
 import java.util.Date;
 
-import static edu.ecu.cs.exerciseapplication.ExerciseDBSchema.*;
 
 /**
  * Created by danderson on 9/12/17.

@@ -1,12 +1,17 @@
-package edu.ecu.cs.exerciseapplication;
+package edu.ecu.cs.exerciseapplication.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import edu.ecu.cs.exerciseapplication.ExerciseDBSchema.UserTable;
 
-import static edu.ecu.cs.exerciseapplication.ExerciseDBSchema.*;
+import edu.ecu.cs.exerciseapplication.Workout;
+import edu.ecu.cs.exerciseapplication.database.ExerciseDBSchema.ExerciseTable;
+import edu.ecu.cs.exerciseapplication.database.ExerciseDBSchema.StepsTable;
+import edu.ecu.cs.exerciseapplication.database.ExerciseDBSchema.UserTable;
+import edu.ecu.cs.exerciseapplication.database.ExerciseDBSchema.WeightTable;
+import edu.ecu.cs.exerciseapplication.database.ExerciseDBSchema.WorkoutTable;
+
 
 /**
  * Created by danderson on 10/3/17.
@@ -31,6 +36,15 @@ public class ExerciseDBHelper extends SQLiteOpenHelper {
                 + UserTable.Cols.GENDER + ", "
                 + UserTable.Cols.STEP_GOAL + ")"
         );
+
+        sqLiteDatabase.execSQL("create table " + ExerciseTable.NAME + "("
+                + " _id integer primary key autoincrement, "
+                + ExerciseTable.Cols.WORKOUT_UUID + ", "
+                + ExerciseTable.Cols.EXERCISE + ", "
+                + ExerciseTable.Cols.REPS + ", "
+                + ExerciseTable.Cols.SETS + ", "
+                + ExerciseTable.Cols.CALORIES + ")"
+        );
         sqLiteDatabase.execSQL("create table " + WeightTable.NAME + "("
                 + WeightTable.Cols.UUID + ", "
                 + WeightTable.Cols.WEIGHT + ", "
@@ -42,6 +56,12 @@ public class ExerciseDBHelper extends SQLiteOpenHelper {
                 + StepsTable.Cols.STEPS + ", "
                 + StepsTable.Cols.DATE + ", "
                 + StepsTable.Cols.DAY + ")"
+        );
+        sqLiteDatabase.execSQL("create table " + WorkoutTable.NAME + "("
+                + " _id integer primary key autoincrement, "
+                + WorkoutTable.Cols.UUID + ", "
+                + WorkoutTable.Cols.WORKOUT_NAME + ", "
+                + WorkoutTable.Cols.WORKOUT_DATE + ")"
         );
     }
 

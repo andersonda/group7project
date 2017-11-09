@@ -6,11 +6,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import static edu.ecu.cs.exerciseapplication.ExerciseDBSchema.*;
+import edu.ecu.cs.exerciseapplication.database.ExerciseDBHelper;
+import edu.ecu.cs.exerciseapplication.database.ExerciseDBSchema.StepsTable;
+
 
 /**
  * Created by delta on 11/6/2017.

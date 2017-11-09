@@ -6,7 +6,8 @@ import android.database.CursorWrapper;
 import java.util.Date;
 import java.util.UUID;
 
-import static edu.ecu.cs.exerciseapplication.ExerciseDBSchema.*;
+import edu.ecu.cs.exerciseapplication.database.ExerciseDBSchema.StepsTable;
+
 
 /**
  * Created by delta on 11/6/2017.

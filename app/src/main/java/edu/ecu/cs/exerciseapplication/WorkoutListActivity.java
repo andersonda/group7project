@@ -5,17 +5,19 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 
 /**
- * Created by danderson on 10/25/17.
+ * Created by hunter on 11/5/17.
  */
 
-public class WeightListActivity extends SingleFragmentActivity {
+public class WorkoutListActivity extends SingleFragmentActivity
+{
     @Override
-    protected Fragment createFragment() {
-        return new WeightListFragment();
+    protected Fragment createFragment()
+    {
+        return new WorkoutListFragment();
     }
 
     public static Intent newIntent(Context context){
-        Intent intent = new Intent(context, WeightListActivity.class);
+        Intent intent = new Intent(context,WorkoutListActivity.class);
         return intent;
     }
 }

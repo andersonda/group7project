@@ -6,17 +6,17 @@
               android:gravity="center"    >
 
     <TextView
+        android:id="@+id/workout_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Workout"
+        android:text="Workout hello"
         android:textSize="60sp"
         android:textStyle="bold"/>
 
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/exercise_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="(Place Holder)"/>
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

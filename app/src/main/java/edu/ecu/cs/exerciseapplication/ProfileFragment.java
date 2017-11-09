@@ -26,7 +26,9 @@ import android.widget.TextView;
 import java.io.File;
 import java.util.List;
 
-import static edu.ecu.cs.exerciseapplication.ExerciseDBSchema.*;
+import edu.ecu.cs.exerciseapplication.database.ExerciseDBHelper;
+import edu.ecu.cs.exerciseapplication.database.ExerciseDBSchema;
+import edu.ecu.cs.exerciseapplication.database.ExerciseDBSchema.UserTable;
 
 /**
  * Created by hunter on 9/16/17.

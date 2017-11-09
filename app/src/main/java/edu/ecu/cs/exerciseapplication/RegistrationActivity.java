@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
+import edu.ecu.cs.exerciseapplication.database.ExerciseDBHelper;
+
 public class RegistrationActivity extends SingleFragmentActivity {
     @Override
-    public Fragment createFragment(){
+    protected Fragment createFragment(){
         return new RegistrationFragment();
     }
 

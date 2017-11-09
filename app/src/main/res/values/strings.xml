@@ -23,6 +23,7 @@
     <string name="kilos">Kilos</string>
     <string name="ft">ft</string>
     <string name="lb">lb</string>
+    <string name="exercise_add">Exercise</string>
     <string name="log_weight">Log Weight</string>
     <string name="weight_dialog_title">Enter New Weight:</string>
     <string name="weight_delete_all">Clear Weight History</string>

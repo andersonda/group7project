@@ -13,6 +13,7 @@ import android.widget.Button;
 
 public class HomeFragment extends Fragment {
     Button mProfileButton;
+    Button mWorkoutButton;
     Button mStepsButton;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -24,6 +25,15 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = ProfileActivity.newIntent(getActivity());
+                startActivity(intent);
+            }
+        });
+
+        mWorkoutButton = v.findViewById(R.id.workout_button);
+        mWorkoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = WorkoutListActivity.newIntent(getActivity());
                 startActivity(intent);
             }
         });

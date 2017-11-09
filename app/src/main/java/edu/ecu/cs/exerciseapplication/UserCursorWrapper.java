@@ -4,7 +4,7 @@ import android.database.Cursor;
 import android.database.CursorWrapper;
 import android.database.sqlite.SQLiteDatabase;
 
-import static edu.ecu.cs.exerciseapplication.ExerciseDBSchema.*;
+import static edu.ecu.cs.exerciseapplication.database.ExerciseDBSchema.*;
 
 /**
  * Created by danderson on 10/12/17.

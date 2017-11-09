@@ -1,29 +1,27 @@
 package edu.ecu.cs.exerciseapplication;
+
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.util.UUID;
 
 /**
- * Created by hunter on 9/16/17.
+ * Created by hunter on 11/5/17.
  */
 
-public class WorkoutFragment extends Fragment {
+public class WorkoutNewFragment extends Fragment {
 
     private static final String ARG_WORKOUT_ID = "edu.ecu.cd.exerciseapplication.workout_id";
-    private TextView mWorkoutNameTextview;
     private Workout mWorkout;
 
-    public static WorkoutFragment newInstance(UUID workoutId) {
+    public static WorkoutNewFragment newInstance(UUID workoutId) {
         Bundle args = new Bundle();
         args.putSerializable(ARG_WORKOUT_ID, workoutId);
 
-        WorkoutFragment fragment = new WorkoutFragment();
+        WorkoutNewFragment fragment = new WorkoutNewFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -36,12 +34,11 @@ public class WorkoutFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        super.onCreateView(inflater, container, savedInstanceState);
-        View v = inflater.inflate(R.layout.fragment_workout,container,false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState){
+        View v = inflater.inflate(R.layout.fragment_new_workout, container, false);
 
-        mWorkoutNameTextview = v.findViewById(R.id.workout_name);
-        mWorkoutNameTextview.setText(mWorkout.getName());
+
 
         return v;
     }

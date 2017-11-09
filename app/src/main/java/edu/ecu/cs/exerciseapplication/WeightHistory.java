@@ -10,7 +10,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
-import static edu.ecu.cs.exerciseapplication.ExerciseDBSchema.*;
+import edu.ecu.cs.exerciseapplication.database.ExerciseDBHelper;
+import edu.ecu.cs.exerciseapplication.database.ExerciseDBSchema.UserTable;
+import edu.ecu.cs.exerciseapplication.database.ExerciseDBSchema.WeightTable;
+
 
 /**
  * Created by danderson on 10/25/17.
