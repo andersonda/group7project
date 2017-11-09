@@ -74,6 +74,8 @@ public class WorkoutListFragment extends Fragment
         updateUI();
     }
 
+
+
     private class WorkoutHolder extends RecyclerView.ViewHolder
             implements View.OnClickListener
     {
@@ -104,7 +106,7 @@ public class WorkoutListFragment extends Fragment
         public void onClick(View v)
         {
             Intent intent = WorkoutActivity.newIntent(getActivity(), mWorkout.getId());
-            startActivity(intent);
+            startActivityForResult(intent,REQUEST_NEW_WORKOUT);
         }
     }
 

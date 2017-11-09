@@ -11,17 +11,17 @@ import java.util.UUID;
  */
 
 public class WorkoutActivity extends SingleFragmentActivity {
-    private static final String EXTRA_WORKOUT_ID_2="edu.ecu.cs.exerciseapplication.workout_id_2";
+    private static final String EXTRA_WORKOUT_ID="edu.ecu.cs.exerciseapplication.workout_id";
 
     @Override
     protected Fragment createFragment() {
-        UUID workoutId = (UUID) getIntent().getSerializableExtra(EXTRA_WORKOUT_ID_2);
+        UUID workoutId = (UUID) getIntent().getSerializableExtra(EXTRA_WORKOUT_ID);
         return WorkoutFragment.newInstance(workoutId);
     }
 
     public static Intent newIntent(Context context, UUID id){
-        Intent intent = new Intent(context,WorkoutListActivity.class);
-        intent.putExtra(EXTRA_WORKOUT_ID_2, id);
+        Intent intent = new Intent(context,WorkoutActivity.class);
+        intent.putExtra(EXTRA_WORKOUT_ID, id);
         return intent;
     }
 }

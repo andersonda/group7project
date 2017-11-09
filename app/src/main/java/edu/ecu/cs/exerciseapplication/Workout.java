@@ -19,7 +19,7 @@ public class Workout {
 
     public Workout(){
         mId = UUID.randomUUID();
-        mName = "";
+        mName = "Workout " +mId;
         mExerciseList = new ArrayList<>();
         mTotalCalories = getTotalCalories();
         mDate = new Date();

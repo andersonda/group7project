@@ -5,8 +5,8 @@
     <color name="colorAccent">#FF4081</color>
     <color name="exercise1">#daf7a6</color>
     <color name="exercise2">#ffc300</color>
-    <color name="exercise3"> #FF5733 </color>
-    <color name="exercise4">#C70039</color>
+    <color name="exercise3">#ff5733</color>
+    <color name="exercise4">#c70039</color>
     <color name="exercise5">#900c3f</color>
     <color name="exercise6">#581845</color>
 </resources>

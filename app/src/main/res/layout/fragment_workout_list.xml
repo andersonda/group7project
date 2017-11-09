@@ -11,10 +11,10 @@
         android:id="@+id/new_workout_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/exercise5"
+        android:background="@color/exercise2"
         android:drawableLeft="@mipmap/ic_new_workout"
         android:text="Create New Workout"
-        android:textColor="@color/exercise2"/>
+        android:textColor="@color/exercise6"/>
 
     <android.support.v7.widget.RecyclerView
                 android:id="@+id/workout_recycler_view"
