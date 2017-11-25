@@ -95,6 +95,7 @@ public class StepsListFragment extends Fragment {
             case R.id.add_step_entry : {
                 Intent intent = WalkActivity.newIntent(getActivity());
                 startActivity(intent);
+                getActivity().finish();
                 return true;
             }
             default :
@@ -104,7 +105,7 @@ public class StepsListFragment extends Fragment {
 
     private void updateUI() {
         StepHistory history = StepHistory.get(getActivity());
-        List<Steps> steps = history.getSteps();
+        List<Steps> steps = history.getDailyStepsTotals();
 
         final DataPoint[] points = new DataPoint[steps.size()];
         for(int i = 0; i < steps.size(); i++){
@@ -123,7 +124,7 @@ public class StepsListFragment extends Fragment {
 
         mHandler.post(mUpdateGraph);
 
-        if(steps.size() > 1) {
+        if(steps.size() > 0) {
             mGraphView.getViewport().setMinX(steps.get(0).getDate().getTime());
             mGraphView.getViewport().setMaxX(steps.get(steps.size() - 1).getDate().getTime());
         }
@@ -147,7 +148,7 @@ public class StepsListFragment extends Fragment {
         });
     }
 
-    private class StepsHolder extends RecyclerView.ViewHolder{
+    private class StepsHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView mStepsTextView;
         private TextView mDateTextView;
         private ImageView mStepsIcon;
@@ -156,6 +157,7 @@ public class StepsListFragment extends Fragment {
 
         public StepsHolder(LayoutInflater inflater, ViewGroup parent){
             super(inflater.inflate(R.layout.list_item_weight, parent, false));
+            itemView.setOnClickListener(this);
             mStepsTextView = itemView.findViewById(R.id.weight_number);
             mDateTextView = itemView.findViewById(R.id.weight_date);
             mStepsIcon = itemView.findViewById(R.id.weight_icon);
@@ -175,6 +177,12 @@ public class StepsListFragment extends Fragment {
             else{
                 mStepsIcon.setBackgroundResource(R.mipmap.ic_check);
             }
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent intent = StepSummaryActivity.newIntent(getActivity(), mSteps.getDate());
+            startActivity(intent);
         }
     }
 

@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
 
@@ -46,19 +47,33 @@ public class StepHistory {
         return steps;
     }
 
-    public List<Steps> getStepsForDayOfWeek(String dayOfWeek){
+    public List<Steps> getDailyStepsTotals(){
         List<Steps> steps = new ArrayList<>();
-        String whereClause = "day = ?";
-        String[] whereArgs = new String[]{dayOfWeek};
+        Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
 
-        try (StepsCursorWrapper cursor = querySteps(whereClause, whereArgs)) {
+        try (StepsCursorWrapper cursor = querySteps(null, null)) {
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
-                steps.add(cursor.getSteps());
+                boolean foundEntry = false;
+                for(Steps stepsEntry : steps){
+                    cal1.setTime(stepsEntry.getDate());
+                    cal2.setTime(cursor.getSteps().getDate());
+
+                    if(cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
+                            cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR)){
+
+                        stepsEntry.setNumSteps(stepsEntry.getNumSteps() + cursor.getSteps().getNumSteps());
+                        foundEntry = true;
+                        break;
+                    }
+                }
+                if(!foundEntry){
+                    steps.add(cursor.getSteps());
+                }
                 cursor.moveToNext();
             }
         }
-
         return steps;
     }
 
