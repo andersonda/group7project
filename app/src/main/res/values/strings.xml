@@ -41,4 +41,6 @@
     <string name="step_summary_for_date">Step Summary for %1$s</string>
     <string name="step_goal_fraction">%1$d out of %2$d steps</string>
     <string name="steps">%1$d steps at %2$s</string>
+    <string name="step_clear_dialog">Clear Step History</string>
+    <string name="step_clear_alert">Are you sure you want to clear all step history? This cannot be reversed!</string>
 </resources>

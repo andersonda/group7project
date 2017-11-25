@@ -153,13 +153,11 @@ public class StepHistory {
     }
 
     /**
-     * clear all steps history besides the most recent entry
+     * clear all steps history
      * @param id
      */
-    public void clearStepsHistory(UUID id){
-        String whereClause = StepsTable.Cols.UUID + " != ?";
-        String[] whereArgs = new String[]{id.toString()};
-        mDatabase.delete(StepsTable.NAME, whereClause, whereArgs);
+    public void clearStepsHistory(){
+        mDatabase.delete(StepsTable.NAME, null, null);
     }
 
     public int getDailyStepGoal(){

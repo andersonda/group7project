@@ -1,5 +1,6 @@
 package edu.ecu.cs.exerciseapplication;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -89,6 +90,7 @@ public class StepsListFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        FragmentManager manager = getFragmentManager();
         switch(item.getItemId()){
             case R.id.add_step_entry : {
                 Intent intent = WalkActivity.newIntent(getActivity());
@@ -96,8 +98,26 @@ public class StepsListFragment extends Fragment {
                 getActivity().finish();
                 return true;
             }
+            case R.id.delete_all : {
+                ClearStepHistoryFragment clearDialog = ClearStepHistoryFragment.newInstance();
+                clearDialog.setTargetFragment(StepsListFragment.this, REQUEST_CLEAR);
+                clearDialog.show(manager, DIALOG_CLEAR);
+            }
             default :
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode != Activity.RESULT_OK){
+            return;
+        }
+
+        if(requestCode == REQUEST_CLEAR){
+            StepHistory history = StepHistory.get(getActivity());
+            history.clearStepsHistory();
+            updateUI();
         }
     }
 

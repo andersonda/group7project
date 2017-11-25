@@ -22,7 +22,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginBottom="32dp"
         android:gravity="center"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:text="@string/step_goal_fraction"/>
 
     <android.support.v7.widget.RecyclerView
