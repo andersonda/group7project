@@ -33,4 +33,8 @@
     <string name="clear_step_history">Clear Step History</string>
     <string name="add_steps_entry">Add Steps Entry</string>
     <string name="view_weekly_statistics">View Weekly Statistics</string>
-    </resources>
+    <string name="new_walk">New Walk</string>
+    <string name="step_default">0 Steps</string>
+    <string name="end_walk">End</string>
+    <string name="start_walk">Start</string>
+</resources>

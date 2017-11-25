@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="edu.ecu.cs.exerciseapplication">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="edu.ecu.cs.exerciseapplication">
 
     <application
         android:allowBackup="true"
@@ -13,43 +13,35 @@
         tools:replace="android:icon">
         <activity android:name=".RegistrationActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".WorkoutListActivity"></activity>
+        <activity android:name=".WorkoutActivity"></activity>
+        <activity android:name=".WorkoutNewActivity"></activity>
+        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".WeightListActivity"></activity>
+        <activity android:name=".StepsListActivity"></activity>
 
-        <activity
-            android:name=".HomeActivity">
-        </activity>
-        <activity
-            android:name=".WorkoutListActivity">
-        </activity>
-        <activity
-            android:name=".WorkoutActivity">
-        </activity>
-        <activity
-            android:name=".WorkoutNewActivity">
-        </activity>
-        <activity
-            android:name=".ProfileActivity">
-        </activity>
-        <activity
-            android:name=".WeightListActivity">
-        </activity>
-        <activity
-            android:name=".StepsListActivity">
-        </activity>
         <provider
-            android:authorities="edu.ecu.cs.exerciseapplication.fileprovider"
             android:name="android.support.v4.content.FileProvider"
+            android:authorities="edu.ecu.cs.exerciseapplication.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/files">
-            </meta-data>
+                android:resource="@xml/files"></meta-data>
         </provider>
+
+        <activity android:name=".WalkActivity"
+            android:parentActivityName=".StepsListActivity">
+        </activity>
     </application>
+
+    <uses-feature android:name="android.hardware.sensor.stepcounter" />
+    <uses-feature android:name="android.hardware.sensor.stepdetector" />
 
 </manifest>

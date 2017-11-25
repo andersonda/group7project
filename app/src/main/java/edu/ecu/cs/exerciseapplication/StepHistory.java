@@ -31,15 +31,6 @@ public class StepHistory {
 
     private StepHistory(Context context){
         mDatabase = new ExerciseDBHelper(context.getApplicationContext()).getWritableDatabase();
-
-        Steps steps = new Steps(10000);
-        steps.setDayOfWeek("Monday");
-
-        Steps steps1 = new Steps(4000);
-        steps.setDayOfWeek("Tuesday");
-
-        addSteps(steps);
-        addSteps(steps1);
     }
 
     public List<Steps> getSteps(){

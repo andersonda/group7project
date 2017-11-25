@@ -1,5 +1,6 @@
 package edu.ecu.cs.exerciseapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -88,6 +89,19 @@ public class StepsListFragment extends Fragment {
         inflater.inflate(R.menu.fragment_step_list, menu);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.add_step_entry : {
+                Intent intent = WalkActivity.newIntent(getActivity());
+                startActivity(intent);
+                return true;
+            }
+            default :
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     private void updateUI() {
         StepHistory history = StepHistory.get(getActivity());
         List<Steps> steps = history.getSteps();
@@ -109,8 +123,10 @@ public class StepsListFragment extends Fragment {
 
         mHandler.post(mUpdateGraph);
 
-        mGraphView.getViewport().setMinX(steps.get(0).getDate().getTime());
-        mGraphView.getViewport().setMaxX(steps.get(steps.size() - 1).getDate().getTime());
+        if(steps.size() > 1) {
+            mGraphView.getViewport().setMinX(steps.get(0).getDate().getTime());
+            mGraphView.getViewport().setMaxX(steps.get(steps.size() - 1).getDate().getTime());
+        }
         mGraphView.getViewport().setXAxisBoundsManual(true);
         mGraphView.getGridLabelRenderer().setHumanRounding(false);
 
