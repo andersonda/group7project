@@ -32,10 +32,8 @@ import java.util.List;
 
 public class StepsListFragment extends Fragment {
 
-    private static final String DIALOG_DAY = "DialogDay";
     private static final String DIALOG_CLEAR = "DialogClear";
 
-    private static final int REQUEST_DAY = 0;
     private static final int REQUEST_CLEAR = 1;
 
     private RecyclerView mStepsRecyclerView;

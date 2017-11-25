@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -75,6 +76,37 @@ public class StepHistory {
             }
         }
         return steps;
+    }
+
+    public List<Steps> getWalksOnDate(Date date){
+        List<Steps> steps = new ArrayList<>();
+        Calendar cal1 = Calendar.getInstance();
+        cal1.setTime(date);
+        Calendar cal2 = Calendar.getInstance();
+
+        try (StepsCursorWrapper cursor = querySteps(null, null)) {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                cal2.setTime(cursor.getSteps().getDate());
+                if(cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
+                        cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR)){
+                    steps.add(cursor.getSteps());
+                }
+                cursor.moveToNext();
+            }
+        }
+        return steps;
+    }
+
+    public int getTotalStepsOnDate(Date date){
+        List<Steps> steps = getWalksOnDate(date);
+        int res = 0;
+
+        for(Steps stepsEntry : steps){
+            res += stepsEntry.getNumSteps();
+        }
+
+        return res;
     }
 
     public Steps getStepsEntry(UUID id){

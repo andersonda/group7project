@@ -8,11 +8,6 @@
         app:showAsAction="ifRoom|withText">
     </item>
     <item
-        android:id="@+id/view_week_statistics"
-        android:icon="@drawable/ic_day_staistics"
-        android:title="@string/view_weekly_statistics"
-        app:showAsAction="ifRoom|withText"/>
-    <item
         android:id="@+id/delete_all"
         android:icon="@drawable/ic_delete_all"
         android:title="@string/clear_step_history"
