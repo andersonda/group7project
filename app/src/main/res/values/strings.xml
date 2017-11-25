@@ -31,10 +31,11 @@
     <string name="weight_clear_alert">Are you sure you want to clear all weight history? This cannot be reversed!</string>
     <string name="edit_step_goal">Edit Step Goal</string>
     <string name="clear_step_history">Clear Step History</string>
-    <string name="add_steps_entry">Add Steps Entry</string>
+    <string name="add_steps_entry">Start New Walk</string>
     <string name="view_weekly_statistics">View Weekly Statistics</string>
     <string name="new_walk">New Walk</string>
     <string name="step_default">0 Steps</string>
     <string name="end_walk">End</string>
     <string name="start_walk">Start</string>
+    <string name="submit_walk">Submit Walk</string>
 </resources>

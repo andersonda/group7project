@@ -54,8 +54,7 @@ public class ExerciseDBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("create table " + StepsTable.NAME + "("
                 + StepsTable.Cols.UUID + ", "
                 + StepsTable.Cols.STEPS + ", "
-                + StepsTable.Cols.DATE + ", "
-                + StepsTable.Cols.DAY + ")"
+                + StepsTable.Cols.DATE + ")"
         );
         sqLiteDatabase.execSQL("create table " + WorkoutTable.NAME + "("
                 + " _id integer primary key autoincrement, "

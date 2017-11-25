@@ -26,16 +26,28 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_marginTop="32sp">
         <ToggleButton
             android:id="@+id/walk_start_stop"
             android:layout_weight="1"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:textSize="40dp"
-            android:layout_width="wrap_content"
+            android:textSize="40sp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textOn="@string/end_walk"
             android:textOff="@string/start_walk"/>
+        <Button
+            android:id="@+id/submit_walk"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="32dp"
+            android:textSize="40sp"
+            android:text="@string/submit_walk"
+            />
     </LinearLayout>
 </LinearLayout>

@@ -20,12 +20,10 @@ public class StepsCursorWrapper extends CursorWrapper {
         String uuidString = getString(getColumnIndex(StepsTable.Cols.UUID));
         int numSteps = getInt(getColumnIndex(StepsTable.Cols.STEPS));
         long date = getLong(getColumnIndex(StepsTable.Cols.DATE));
-        String day = getString(getColumnIndex(StepsTable.Cols.DAY));
 
         Steps steps = new Steps(UUID.fromString(uuidString));
         steps.setNumSteps(numSteps);
         steps.setDate(new Date(date));
-        steps.setDayOfWeek(day);
 
         return steps;
     }

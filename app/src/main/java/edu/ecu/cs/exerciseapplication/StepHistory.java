@@ -82,7 +82,6 @@ public class StepHistory {
         values.put(StepsTable.Cols.UUID, steps.getID().toString());
         values.put(StepsTable.Cols.STEPS, steps.getNumSteps());
         values.put(StepsTable.Cols.DATE, steps.getDate().getTime());
-        values.put(StepsTable.Cols.DAY, steps.getDayOfWeek());
 
         return values;
     }

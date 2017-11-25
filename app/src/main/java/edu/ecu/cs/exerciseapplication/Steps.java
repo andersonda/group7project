@@ -19,7 +19,6 @@ public class Steps {
         this.mNumSteps = numSteps;
         this.mID = UUID.randomUUID();
         this.mDate = new Date();
-        this.mDayOfWeek = DateFormat.format("EEEE", mDate).toString();
     }
 
     public Steps(UUID uuid){
