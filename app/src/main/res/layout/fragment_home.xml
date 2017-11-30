@@ -4,7 +4,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
-              android:background="@color/exercise1">
+              android:background="#FFFFFF">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             android:text="Profile"
             android:drawableBottom="@drawable/profile"
             android:layout_margin="8dp"
-            android:background="@color/exercise1"
+            android:background="#FFFFFF"
             android:padding="8dp"/>
 
         <Button
@@ -30,7 +30,7 @@
             android:text="Steps"
             android:drawableBottom="@drawable/steps"
             android:layout_margin="8dp"
-            android:background="@color/exercise1"
+            android:background="#FFFFFF"
             android:padding="8dp"/>
     </LinearLayout>
 
@@ -48,7 +48,7 @@
             android:layout_weight="1"
             android:drawableBottom="@drawable/workout"
             android:text="Workout"
-            android:background="@color/exercise1"
+            android:background="#FFFFFF"
             android:padding="8dp"/>
 
         <Button
@@ -59,7 +59,7 @@
             android:layout_weight="1"
             android:drawableBottom="@drawable/weight"
             android:text="Log Weight"
-            android:background="@color/exercise1"
+            android:background="#FFFFFF"
             android:padding="8dp"/>
     </LinearLayout>
 
