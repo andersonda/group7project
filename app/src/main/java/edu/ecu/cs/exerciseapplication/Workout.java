@@ -19,7 +19,7 @@ public class Workout {
 
     public Workout(){
         mId = UUID.randomUUID();
-        mName = "Workout " +mId;
+        mName = "General Workout";
         mExerciseList = new ArrayList<>();
         mTotalCalories = getTotalCalories();
         mDate = new Date();
@@ -63,6 +63,14 @@ public class Workout {
 
     public List<Exercise> getExerciseList() {
         return mExerciseList;
+    }
+
+    public void setExerciseList(List<Exercise> exercises){
+        mExerciseList = exercises;
+    }
+
+    public void addNewExercise(Exercise newExercise){
+        mExerciseList.add(newExercise);
     }
 }
 

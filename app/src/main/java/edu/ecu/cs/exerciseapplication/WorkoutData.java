@@ -11,7 +11,10 @@ import java.util.UUID;
 
 import edu.ecu.cs.exerciseapplication.database.ExerciseDBHelper;
 import edu.ecu.cs.exerciseapplication.database.ExerciseDBSchema;
+import edu.ecu.cs.exerciseapplication.database.ExerciseDBSchema.ExerciseTable;
 import edu.ecu.cs.exerciseapplication.database.ExerciseDBSchema.WorkoutTable;
+
+import static edu.ecu.cs.exerciseapplication.R.drawable.workout;
 
 /**
  * Created by hunter on 11/5/17.
@@ -76,6 +79,25 @@ public class WorkoutData
         return Workouts;
     }
 
+    public List<Exercise> getExercises(UUID workoutId)
+    {
+        List<Exercise> exercises = new ArrayList<>();
+
+        ExerciseCursorWrapper cursor =  queryExercises(ExerciseTable.Cols.WORKOUT_UUID + " = ? ",new String[]{workoutId.toString()});
+
+        try{
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()){
+                exercises.add(cursor.getExercise());
+                cursor.moveToNext();
+            }
+        }finally {
+            cursor.close();
+        }
+
+        return exercises;
+    }
+
     /**
      * Given an id, return the {@link Workout} with that id, or null if
      * no {@link Workout} is found.
@@ -103,6 +125,12 @@ public class WorkoutData
         }
     }
 
+    public void addExercse(Exercise exercise){
+        ContentValues values = getContentExerciseValues(exercise);
+
+        mDatabase.insert(ExerciseTable.NAME, null, values);
+    }
+
     public void addWorkout(Workout workout){
         ContentValues values = getContentValues(workout);
 
@@ -117,6 +145,16 @@ public class WorkoutData
         return values;
     }
 
+    private static ContentValues getContentExerciseValues(Exercise exercise){
+        ContentValues values = new ContentValues();
+        values.put(ExerciseTable.Cols.WORKOUT_UUID, exercise.getWorkoutId().toString());
+        values.put(ExerciseTable.Cols.EXERCISE, exercise.getName());
+        values.put(ExerciseTable.Cols.SETS, exercise.getSet());
+        values.put(ExerciseTable.Cols.REPS, exercise.getReps());
+        values.put(ExerciseTable.Cols.CALORIES, exercise.getCalories());
+        return values;
+    }
+
     public void updateWorkout(Workout workout){
         String uuidString = workout.getId().toString();
         ContentValues values = getContentValues(workout);
@@ -127,6 +165,19 @@ public class WorkoutData
     private ExerciseCursorWrapper queryWorkouts(String whereClause, String[] whereArgs){
         Cursor cursor = mDatabase.query(
                 WorkoutTable.NAME,
+                null,
+                whereClause,
+                whereArgs,
+                null,
+                null,
+                null
+        );
+        return new ExerciseCursorWrapper(cursor);
+    }
+
+    private ExerciseCursorWrapper queryExercises(String whereClause, String[] whereArgs){
+        Cursor cursor = mDatabase.query(
+                ExerciseTable.NAME,
                 null,
                 whereClause,
                 whereArgs,

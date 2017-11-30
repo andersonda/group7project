@@ -56,13 +56,13 @@ public class WorkoutListFragment extends Fragment
         }
 
     private void updateUI() {
-        //TODO Get Workouts for specific User
-        List<Workout> Workouts = WorkoutData.getWorkoutData(getActivity()).getWorkouts();
+        List<Workout> workouts = WorkoutData.getWorkoutData(getActivity()).getWorkouts();
 
         if (mAdapter == null) {
-            mAdapter = new WorkoutAdapter(Workouts);
+            mAdapter = new WorkoutAdapter(workouts);
             mWorkoutRecyclerView.setAdapter(mAdapter);
         } else {
+            mAdapter.setWorkouts(workouts);
             mAdapter.notifyDataSetChanged();
         }
     }
@@ -138,7 +138,9 @@ public class WorkoutListFragment extends Fragment
         {
             return mWorkouts.size();
         }
+
+        public void setWorkouts(List<Workout> workouts){
+            mWorkouts = workouts;
+        }
     }
-
-
 }

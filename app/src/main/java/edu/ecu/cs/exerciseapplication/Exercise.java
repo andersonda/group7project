@@ -11,12 +11,18 @@ public class Exercise{
     private int set;
     private int reps;
     private float calories;
+    private UUID workoutId;
 
-    public Exercise(String name, int set, int reps, float calories) {
+    public Exercise(String name, int set, int reps, float calories, UUID workoutId) {
         this.name = name;
         this.set = set;
         this.reps = reps;
         this.calories = calories;
+        this.workoutId= workoutId;
+    }
+
+    public UUID getWorkoutId() {
+        return workoutId;
     }
 
     public String getName() {

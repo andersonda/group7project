@@ -23,8 +23,9 @@ public class ExerciseCursorWrapper extends CursorWrapper {
         int sets = getInt(getColumnIndex(ExerciseTable.Cols.SETS));
         int reps = getInt(getColumnIndex(ExerciseTable.Cols.REPS));
         float calories = getFloat(getColumnIndex(ExerciseTable.Cols.CALORIES));
+        String uuidString = getString(getColumnIndex(ExerciseTable.Cols.WORKOUT_UUID));
 
-        return new Exercise(exercise,sets,reps,calories);
+        return new Exercise(exercise,sets,reps,calories,UUID.fromString(uuidString));
     }
 
     public Workout getWorkout(){

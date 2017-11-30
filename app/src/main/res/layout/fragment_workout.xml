@@ -11,8 +11,14 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Workout hello"
-        android:textSize="60sp"
+        android:textSize="30sp"
         android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/workout_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Date"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/exercise_recycler_view"
