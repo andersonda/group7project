@@ -1,14 +1,22 @@
 package edu.ecu.cs.exerciseapplication;
 
-import com.orm.SugarRecord;
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+
+import java.util.UUID;
+
+import java.io.File;
+import java.util.UUID;
 
 /**
  * Created by danderson on 9/11/17.
  */
 
-public class User extends SugarRecord<User> {
+public class User{
 
     private String mFirstName;
+
     private String mLastName;
 
     /**
@@ -25,16 +33,21 @@ public class User extends SugarRecord<User> {
 
     private boolean mIsMale;
 
+    private int dailyStepGoal;
+
     private static final double KG_TO_LB = 2.20462;
     private static final double M_TO_IN = 39.3701;
 
-    public User(String mFirstName, String mLastName, double mWeight, double mHeight, int mAge, boolean mIsMale) {
+    public static final int DEFAULT_STEP_GOAL = 5000;
+
+    public User(String mFirstName, String mLastName, double mWeight, double mHeight, int mAge, boolean mIsMale, int dailyStepGoal) {
         this.mFirstName = mFirstName;
         this.mLastName = mLastName;
         this.mWeight = mWeight;
         this.mHeight = mHeight;
         this.mAge = mAge;
         this.mIsMale = mIsMale;
+        this.dailyStepGoal = dailyStepGoal;
     }
 
     public String getmFirstName() {
@@ -93,6 +106,14 @@ public class User extends SugarRecord<User> {
         this.mIsMale = mIsMale;
     }
 
+    public int getDailyStepGoal() {
+        return dailyStepGoal;
+    }
+
+    public void setDailyStepGoal(int dailyStepGoal) {
+        this.dailyStepGoal = dailyStepGoal;
+    }
+
     /**
      * BMI = weight(in kilograms) divided by height(in meters) squared.
      * @param height
@@ -149,5 +170,14 @@ public class User extends SugarRecord<User> {
 
     public static double convertLBtoKG(double lb){
         return lb / KG_TO_LB;
+    }
+
+    private String getPhotoFilename(){
+        return "profile_picture.jpg";
+    }
+
+    public File getPhotoFile(Context context){
+        File filesDir = context.getFilesDir();
+        return new File(filesDir, this.getPhotoFilename());
     }
 }

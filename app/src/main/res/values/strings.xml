@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Exercise Application</string>
+    <string name="app_name">LivEx</string>
 
     <string name="register_welcome">Welcome to Exercise App! Since this is your first time, please fill out some basic personal info.</string>
     <string name="register_fname">First Name:</string>
@@ -17,4 +17,30 @@
     <string name="submit_button">Submit</string>
     <string name="register_male_female">Female/Male</string>
     <string name="title_activity_home">HomeActivity</string>
+    <string name="feet">Feet</string>
+    <string name="meters">Meters</string>
+    <string name="pounds">Pounds</string>
+    <string name="kilos">Kilos</string>
+    <string name="ft">ft</string>
+    <string name="lb">lb</string>
+    <string name="exercise_add">Exercise</string>
+    <string name="log_weight">Log Weight</string>
+    <string name="weight_dialog_title">Enter New Weight:</string>
+    <string name="weight_delete_all">Clear Weight History</string>
+    <string name="weight_clear_dialog">Clear Weight History</string>
+    <string name="weight_clear_alert">Are you sure you want to clear all weight history? This cannot be reversed!</string>
+    <string name="edit_step_goal">Edit Step Goal</string>
+    <string name="clear_step_history">Clear Step History</string>
+    <string name="add_steps_entry">Start New Walk</string>
+    <string name="view_weekly_statistics">View Weekly Statistics</string>
+    <string name="new_walk">New Walk</string>
+    <string name="step_default">0 Steps</string>
+    <string name="end_walk">End</string>
+    <string name="start_walk">Start</string>
+    <string name="submit_walk">Submit Walk</string>
+    <string name="step_summary_for_date">Step Summary for %1$s</string>
+    <string name="step_goal_fraction">%1$d out of %2$d steps</string>
+    <string name="steps">%1$d steps at %2$s</string>
+    <string name="step_clear_dialog">Clear Step History</string>
+    <string name="step_clear_alert">Are you sure you want to clear all step history? This cannot be reversed!</string>
 </resources>

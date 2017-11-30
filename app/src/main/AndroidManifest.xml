@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="edu.ecu.cs.exerciseapplication">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="edu.ecu.cs.exerciseapplication">
+
+    <uses-feature android:name="android.hardware.sensor.stepcounter" />
+    <uses-feature android:name="android.hardware.sensor.stepdetector" />
 
     <application
         android:allowBackup="true"
@@ -10,38 +13,42 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:replace="android:icon"
-        android:name="com.orm.SugarApp">
+        tools:replace="android:icon">
         <activity android:name=".RegistrationActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".HomeActivity"/>
+        <activity android:name=".WorkoutListActivity"
+            android:parentActivityName=".HomeActivity"/>
+        <activity android:name=".WorkoutActivity" />
+        <activity android:name=".WorkoutNewActivity" />
+        <activity android:name=".ProfileActivity"
+            android:parentActivityName=".HomeActivity"/>
+        <activity android:name=".WeightListActivity"
+            android:parentActivityName=".ProfileActivity"/>
+        <activity android:name=".StepsListActivity"
+            android:parentActivityName=".HomeActivity"/>
 
-        <meta-data
-            android:name="DATABASE"
-            android:value="exercise.db"/>
-        <meta-data
-            android:name="VERSION"
-            android:value="2"/>
-        <meta-data
-            android:name="QUERY_LOG"
-            android:value="true"/>
-        <meta-data
-            android:name="DOMAIN_PACKAGE_NAME"
-            android:value="edu.ecu.cs.exerciseapplication"/>
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="edu.ecu.cs.exerciseapplication.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/files" />
+        </provider>
 
         <activity
-            android:name=".HomeActivity"
-            android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
+            android:name=".WalkActivity"
+            android:parentActivityName=".StepsListActivity"/>
         <activity
-            android:name=".ProfileActivity">
-        </activity>
+            android:name=".StepSummaryActivity"
+            android:parentActivityName=".StepsListActivity"/>
     </application>
 
 </manifest>
